@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Income Tax Calculator</title>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <div id="header"></div>
+
+
+    <main class="max-w-6xl mx-auto px-6 py-16">
+
+        <!-- Intro section -->
+        <section class="mb-12">
+            <h1 class="text-2xl font-bold mb-6 leading-tight">
+                Understand your income and taxes - clearly
+            </h1>
+
+            <p class="text-lg text-gray-700 max-w-4xl mb-4">
+                <span class="font-semibold text-gray-900">
+                    FinLoggy helps self-employed professionals understand and manage their income and taxes in the UK.
+                </span>
+            </p>
+
+            <p class="text-lg text-gray-600 max-w-4xl mb-4">
+                Start with a free tax calculator and instant visual breakdowns.
+                See how your income, taxes, and net earnings are calculated -
+                clearly and transparently.
+            </p>
+
+            <p class="text-lg text-gray-600 max-w-4xl">
+                When you’re ready, Pro helps you go beyond a single calculation
+                and gain financial clarity over time.
+            </p>
+        </section>
+
+    </main>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <form class="flex flex-col gap-4 p-4 border border-gray-300 rounded shadow-sm bg-white">
+            <div class="flex flex-col gap-4 w-full">
+                <div id="incomeSection" class="w-full p-2 border border-gray-300 rounded shadow-sm">
+                    <div class="w-full sm:w-full md:w-1/2 lg:w-1/3">
+                        <label for="annual-gross-income" class="block mb-1">Annual gross income</label>
+                        <input type="number" id="annual-gross-income" placeholder="Type your annual gross" class="w-full p-2 border border-gray-300 rounded">
+                    </div>
+            
+                    <div class="w-full sm:w-full md:w-1/2 lg:w-1/3">
+                        <label for="allowable-expenses" class="block mb-1">Allowable expenses</label>
+                        <input type="number" id="allowable-expenses" placeholder="Type allowable expensees" class="w-full p-2 border border-gray-300 rounded">
+                    </div>
+
+                    <div class="text-sm text-gray-600 mt-2">
+                        Income Tax is calculated automatically using UK progressive tax bands.
+                    </div>
+                    <div class="text-sm text-gray-600 mt-2">
+                        Class 4 National Insurance is calculated automatically using UK profit thresholds (6% and 2%).
+                    </div>
+
+
+                    <div class="w-full mt-6">
+                        <label for="notes" class="block mb-1 text-gray-700">Notes (optional)</label>
+                        <textarea id="notes" rows="3" class="w-full p-2 border border-gray-300 rounded" placeholder="Any notes... For example: My income and taxes for 2025"></textarea>
+                    </div>
+
+                    <div class="w-full sm:w-full md:w-1/2 lg:w-1/3">
+                        <button id="calculateBtn" type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+                            Calculate Taxes
+                        </button>
+                    </div>
+
+                    <p id="error" class="text-read-500 mt-2"></p>
+
+
+                    <div id="result"
+                        class="w-full mt-4 p-4 border border-gray-300 rounded bg-gray-50">
+                        <!-- here will be result from JS and JQuery -->
+                    </div>
+
+                        <!-- Explanation, how calculator works -->
+                    <div id="ni-info" class="w-full">
+                        National Insurance (Class 4) is calculated progressively.
+                        Different rates apply to different portions of your profit:
+                        0% up to the lower threshold, 6% on the middle range, and 2% above the upper limit.
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <aside class="p-4 border border-gray-200 rounded bg-white text-sm text-gray-700">
+            <div class="mb-6">
+                <h3 class="font-semibold text-base mb-3">
+                    How to use this calculator
+                </h3>
+                <p class="mb-3">
+                    To calculate your estimated UK self-employed taxes:
+                </p>
+                <ul class="list-disc list-inside space-y-1 mb-3">
+                    <li>
+                        Enter your <strong>Annual gross income</strong>.
+                    </li>
+                    <li>
+                        Enter <strong>Allowable expenses</strong> (if applicable).
+                    </li>
+                    <li>
+                        Optionally add notes for your own reference.
+                    </li>
+                    <li>
+                        Click <strong>Calculate Taxes</strong> to view your results.
+                    </li>
+                </ul>
+
+                <p class="text-gray-600">
+                    The results will appear below as charts and a detailed tax table.
+                </p>
+            </div>
+            <div>
+                <h3 class="font-semibold text-base mb-3">
+                    How these numbers are calculated
+                </h3>
+
+                <p class="mb-3">
+                    This calculator estimates your <strong>UK self-employed taxes</strong>
+                    using <strong>official HMRC tax bands and rates</strong>.
+                </p>
+
+                <p class="mb-2 font-medium">It includes:</p>
+                <ul class="list-disc list-inside mb-4 space-y-1">
+                    <li>Income Tax (progressive / tiered bands)</li>
+                    <li>Personal Allowance, including reduction for income above £100,000</li>
+                    <li>Class 4 National Insurance</li>
+                    <li>Profit calculation based on allowable expenses</li>
+                </ul>
+
+                <p class="mb-2 font-medium">Effective marginal rate</p>
+
+                <p class="mb-3">
+                    The <strong>effective marginal rate</strong> shows how much tax applies
+                    to your <strong>next £1 of income</strong>, not to your total profit.
+                </p>
+
+                <p class="mb-3">
+                    Between <strong>£100,000 and £125,140</strong>, the marginal rate is higher because:
+                </p>
+
+                <ul class="list-disc list-inside mb-3 space-y-1">
+                    <li>your income is taxed at the <strong>40% higher rate</strong>, and</li>
+                    <li> part of your <strong>Personal Allowance is withdrawn</strong>,
+                        making additional income taxable.
+                    </li>
+                </ul>
+
+                <p class="mb-3">
+                    This results in a higher effective marginal tax rate in this income range,
+                    due to the combined effect of higher-rate Income Tax and the withdrawal of the Personal Allowance.
+                </p>
+
+                <p class="mb-3">
+                    National Insurance is calculated separately and is
+                    <strong>not affected</strong> by Personal Allowance.
+                </p>
+
+                <p class="font-medium">
+                    This calculator applies all taxes progressively and does
+                    <strong>not apply a single flat rate</strong> to your income.
+                </p>
+            </div>
+        </aside>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div id="resultsContainer" class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8 hidden">
+        <div class="relative w-full max-w-[300px] mx-auto aspect-square">
+            <canvas id="myPieChartTax"></canvas>
+        </div>
+
+
+        <div class="space-y-8 text-gray-800 text-sm">
+            <!-- Pie Chart description -->
+            <div id="pieChartText">
+                <h3 class="font-semibold mb-2">What this pie chart shows</h3>
+                <p>
+                    This pie chart illustrates how your annual profit is distributed between taxes and take-home pay.
+                    <br>Your total profit is £<span id="profitPie">0.00</span>.
+                    <br>From this amount, approximately £<span id="incomeTaxPie">0.00</span> is calculated as Income Tax, based on current UK tax bands.
+                    <br>Your National Insurance is calculated progressively and includes:
+                    <ul class="list-disc ml-5">
+                        <li>£<span id="niAt0Pie">0.00</span> at 0%</li>
+                        <li>£<span id="niAt6Pie">0.00</span> at 6%</li>
+                        <li>£<span id="niAt2Pie">0.00</span> at 2%</li>
+                    </ul>
+                    <br>After all taxes are deducted, your estimated net income is £<span id="netIncomePie">0.00</span>.
+                    <br>This is an estimate for guidance purposes only. Final tax liability is determined by HMRC.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="w-full flex flex-col">
+            <canvas class="flex-1" id="myHorizontalBarChart"></canvas>
+        </div>
+
+
+        <div class="space-y-8 text-gray-800 text-sm mt-4">
+            <div id="barChartText">
+                <h3 class="font-semibold mb-2">What this bar chart shows</h3>
+                <p>
+                    This horizontal bar chart provides a visual breakdown of your annual financials, including profit, Income Tax, National Insurance contributions, and net income.
+                    <br><strong>Profit:</strong> £<span id="profitBarChart">0.00</span>
+                    <br><strong>Income Tax</strong> is shown in its progressive bands:
+                    <ul class="list-disc ml-5">
+                        <li>0% (Personal Allowance): £<span id="taxPABarChart">0.00</span></li>
+                        <li>20% (Basic Rate): £<span id="taxBasicBarChart">0.00</span></li>
+                        <li>40% (Higher Rate): £<span id="taxHigherBarChart">0.00</span></li>
+                        <li>45% (Additional Rate): £<span id="taxAdditionalBarChart">0.00</span></li>
+                    </ul>
+                    <br><strong>National Insurance</strong> is displayed by rate:
+                    <ul class="list-disc ml-5">
+                        <li>0%: £<span id="ni0BarChart">0.00</span></li>
+                        <li>6%: £<span id="ni6BarChart">0.00</span></li>
+                        <li>2%: £<span id="ni2BarChart">0.00</span></li>
+                        <li><strong>Total NI:</strong> £<span id="niTotalBarChart">0.00</span></li>
+                    </ul>
+                    <br><strong>Net Income:</strong> £<span id="netIncomeBarChart">0.00</span> represents your take-home profit after all taxes.
+                    <br>This is an estimate for guidance purposes only. Final tax liability is determined by HMRC.
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="max-w-4xl mx-auto my-8 p-6 bg-white shadow-lg rounded-lg border border-gray-200 print:p-0 print:shadow-none print:border-0">
+  
+                <!-- Report title -->
+            <div class="mb-6 print:hidden">
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Report title
+                </label>
+                <input
+                    id="reportTitleInput"
+                    type="text"
+                    placeholder="Tax and Income Report for John Smith - Tax Year 2024-2025"
+                    class="w-full border border-gray-300 rounded px-3 py-2 text-sm"
+                    oninput="updateReportTitle()"
+                />
+            </div>
+
+                <!-- Printable title -->
+            <div class="print:block hidden mb-6 text-center">
+                <h1 id="reportTitle" class="text-xl font-bold underline"></h1>
+            </div>
+
+                <!-- Report table -->
+            <div class="tax-report overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 text-sm text-gray-900 font-sans print:p-0 print:shadow-none print:border-0">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-3 py-2 text-left font-semibold">Category</th>
+                                <th class="px-3 py-2 text-right font-semibold">Rate</th>
+                                <th class="px-3 py-2 text-left font-semibold">Band range (£)</th>
+                                <th class="px-3 py-2 text-right font-semibold">Taxable amount (£)</th>
+                                <th class="px-3 py-2 text-right font-semibold">Tax due (£)</th>
+                            </tr>
+                        </thead>
+                    <tbody class="divide-y divide-gray-200">
+
+                        <!-- Profit -->
+                        <tr class="bg-gray-100 font-semibold">
+                            <td class="px-3 py-2">Profit</td>
+                            <td class="px-3 py-2 text-right">–</td>
+                            <td class="px-3 py-2">–</td>
+                            <td class="px-3 py-2 text-right" id="profitAmount">0.00</td>
+                            <td class="px-3 py-2 text-right">–</td>
+                        </tr>
+
+                                <!-- Income Tax Header -->
+                        <tr class="bg-gray-50 font-semibold">
+                            <td class="px-3 py-2">Income Tax</td>
+                            <td class="px-3 py-2 text-right">–</td>
+                            <td class="px-3 py-2">–</td>
+                            <td class="px-3 py-2 text-right" id="incomeTaxTotal">0.00</td>
+                            <td class="px-3 py-2 text-right">–</td>
+                        </tr>
+
+                            <!-- Personal Allowance -->
+                        <tr>
+                            <td class="px-3 py-2">Personal Allowance</td>
+                            <td class="px-3 py-2 text-right">0%</td>
+                            <td class="px-3 py-2">0 – 12,570</td>
+                            <td class="px-3 py-2 text-right" id="taxablePA">0.00</td>
+                            <td class="px-3 py-2 text-right" id="taxPA">0.00</td>
+                            </tr>
+
+                            <!-- Basic Rate -->
+                        <tr>
+                            <td class="px-3 py-2">Basic Rate</td>
+                            <td class="px-3 py-2 text-right">20%</td>
+                            <td class="px-3 py-2">12,571 – 50,270</td>
+                            <td class="px-3 py-2 text-right" id="taxableBasic">0.00</td>
+                            <td class="px-3 py-2 text-right" id="taxBasic">0.00</td>
+                        </tr>
+
+                            <!-- Higher Rate -->
+                        <tr>
+                            <td class="px-3 py-2">Higher Rate</td>
+                            <td class="px-3 py-2 text-right">40%</td>
+                            <td class="px-3 py-2">50,271 – 125,140</td>
+                            <td class="px-3 py-2 text-right" id="taxableHigher">0.00</td>
+                            <td class="px-3 py-2 text-right" id="taxHigher">0.00</td>
+                        </tr>
+
+                            <!-- Additional Rate -->
+                        <tr>
+                            <td class="px-3 py-2">Additional Rate</td>
+                            <td class="px-3 py-2 text-right">45%</td>
+                            <td class="px-3 py-2">125,141 +</td>
+                            <td class="px-3 py-2 text-right" id="taxableAdditional">0.00</td>
+                            <td class="px-3 py-2 text-right" id="taxAdditional">0.00</td>
+                        </tr>
+
+                            <!-- Class 4 National Insurance Header -->
+                        <tr class="bg-gray-50 font-semibold">
+                            <td class="px-3 py-2">Class 4 National Insurance</td>
+                            <td class="px-3 py-2 text-right">–</td>
+                            <td class="px-3 py-2">–</td>
+                            <td class="px-3 py-2 text-right" id="niTotal">0.00</td>
+                            <td class="px-3 py-2 text-right">–</td>
+                        </tr>
+
+                            <!-- NI 0% -->
+                        <tr>
+                            <td class="px-3 py-2">0%</td>
+                            <td class="px-3 py-2 text-right">0%</td>
+                            <td class="px-3 py-2">0 – 12,570</td>
+                            <td class="px-3 py-2 text-right" id="ni0">0.00</td>
+                            <td class="px-3 py-2 text-right">0.00</td>
+                        </tr>
+
+                            <!-- NI 6% -->
+                        <tr>
+                            <td class="px-3 py-2">6%</td>
+                            <td class="px-3 py-2 text-right">6%</td>
+                            <td class="px-3 py-2">12,571 – 50,270</td>
+                            <td class="px-3 py-2 text-right" id="ni6">0.00</td>
+                            <td class="px-3 py-2 text-right">0.00</td>
+                        </tr>
+
+                            <!-- NI 2% -->
+                        <tr>
+                            <td class="px-3 py-2">2%</td>
+                            <td class="px-3 py-2 text-right">2%</td>
+                            <td class="px-3 py-2">50,271 +</td>
+                            <td class="px-3 py-2 text-right" id="ni2">0.00</td>
+                            <td class="px-3 py-2 text-right">0.00</td>
+                        </tr>
+
+                            <!-- Net Income -->
+                        <tr class="bg-gray-100 font-semibold">
+                            <td class="px-3 py-2">Net Income</td>
+                            <td class="px-3 py-2 text-right">–</td>
+                            <td class="px-3 py-2">–</td>
+                            <td class="px-3 py-2 text-right" id="netIncome">0.00</td>
+                            <td class="px-3 py-2 text-right">–</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+
+                <!-- Export to PDF button -->
+            <button
+                onclick="exportTaxReportToPDF()"
+                class="mt-6 px-4 py-2 bg-gray-800 text-white text-sm rounded hover:bg-gray-700 print:hidden"
+            >
+                Export to PDF
+            </button>
+
+        </div>
+
+
+                    <!-- Table description (HMRC style) -->
+        <div id="taxTableText" class="mt-10">
+            <h3 class="font-semibold mb-2">How to read this table</h3>
+            <p>
+                This table provides a detailed breakdown of your annual profit, showing the amounts taxed at each rate for Income Tax and Class 4 National Insurance.
+                <br><strong>Category:</strong> The type of income, tax, or contribution.
+                <br><strong>Rate:</strong> The percentage rate applied to the taxable amount.
+                <br><strong>Band range (£):</strong> The income range to which this rate applies.
+                <br><strong>Taxable amount (£):</strong> The portion of your profit within this band.
+                <br><strong>Tax due (£):</strong> The amount of tax or National Insurance calculated for this band.
+                <br><strong>Key points:</strong>
+                <ul class="list-disc ml-5">
+                    <li>Income Tax is calculated progressively across bands: Personal Allowance (0%), Basic Rate (20%), Higher Rate (40%), Additional Rate (45%).</li>
+                    <li>Class 4 National Insurance is calculated progressively: 0%, 6%, 2% on applicable profit ranges.</li>
+                    <li>Net Income represents your take-home profit after all taxes and contributions.</li>
+                </ul>
+                <br>These figures are estimates based on your annual profit and current UK tax thresholds.
+                <br>For official rates and bands, see <a href="https://www.gov.uk/income-tax-rates" class="text-blue-600 underline" target="_blank">HMRC Income Tax Rates</a>.
+                <br>This tool does not replace professional advice or an HMRC calculation.
+            </p>
+        </div>
+    </div>
+
+
+
+
+    
+    <div class="mt-8 p-4 bg-gray-50 border rounded flex justify-between items-center mx-auto max-w-2xl">
+        <div>
+            <h3 class="front-semibold">Need more?</h3>
+            <p class="text-sm text-gray-600">
+                Save reports, track montly income & expenses, export PDF & view detailed charts 
+            </p>
+        </div>
+        <a href="why-choose-pro.html" class="cursor-pointer ml-4 px-4 py-2 bg-gray-800 text-white text-sm rounded hover:bg-gray-700">
+            Unlock Pro
+        </a>
+    </div>
+    
+    <div>
+        <footer class="mt-12 py-6 bg-gray-100 text-center text-sm text-gray-600">
+            <p>This tool provides an estimate only and does not replace professional tax advice or an HMRC calculation.</p>
+            <p>&copy; <span id="currentYear"></span> FinLoggy. All rights reserved.</p>
+            <p>
+                <a href="terms-of-service.html" class="underline">Terms of Service</a> |
+                <a href="privacy.html" class="underline">Privacy Policy</a>
+            </p>
+            <p>
+                <a href="contact-us.html" class="underline">Feedback / Contact us</a>
+            </p>
+        </footer>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- CSS to print only tables -->
+<style>
+@media print {
+  body * {
+    visibility: hidden; /* ховаємо все на сторінці */
+  }
+
+  .tax-report, .tax-report * {
+    visibility: visible; /* hide everything on the page */
+  }
+
+  .tax-report {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .print-hidden {
+    display: none !important; /* hide buttons and input */
+  }
+}
+</style>
+
+
+
+
+    <script src="/js/charts.js" defer></script>
+    <script src="/js/calculator.js" defer></script>
+    <script src="/js/main.js" defer></script>
+   
+
+
+
+   
+
+</body>
+</html>

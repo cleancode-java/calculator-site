@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Income Tax Calculator</title>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <div id="header"></div>
+
+    <main class="max-w-5xl mx-auto px-6 py-12">
+
+        <!-- Page title -->
+        <section class="mb-12">
+            <h2 class="text-4xl font-bold mb-4">
+                Why choose Pro?
+            </h2>
+            <p class="text-lg text-gray-600 max-w-3xl">
+                The free calculator is a great starting point — it helps you quickly estimate your UK tax
+                and National Insurance contributions. But for self-employed professionals, tax calculation
+                is only one part of the picture.
+            </p>
+        </section>
+
+        <!-- Intro highlight -->
+        <section class="mb-12 bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
+            <p class="text-xl font-semibold text-gray-800">
+                Pro turns a calculator into a complete financial tracking system.
+            </p>
+        </section>
+
+        <!-- Features -->
+        <section class="space-y-10">
+
+            <!-- Feature 1 -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-3">
+                    More than just calculations
+                </h3>
+                <p class="text-gray-700 mb-4">
+                    With Pro, you don’t just calculate tax once — you track your income over time:
+                </p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>Monthly and yearly income overview</li>
+                    <li>Ongoing tax estimation based on real data</li>
+                    <li>Clear understanding of how much you really earn after tax</li>
+                </ul>
+            </div>
+
+                <!-- Feature 2 -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-3">
+                    Better financial decisions
+                </h3>
+                <p class="text-gray-700 mb-4">
+                    Pro helps you see the full financial picture, not just numbers:
+                </p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>Visual reports and summaries</li>
+                    <li>Income trends and comparisons</li>
+                    <li>Better planning for tax payments and savings</li>
+                </ul>
+            </div>
+
+                <!-- Feature 3 -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-3">
+                    Designed for real self-employed life
+                </h3>
+                <p class="text-gray-700 mb-4">
+                    Pro is built for people who:
+                </p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>Have irregular income</li>
+                    <li>Work with multiple clients</li>
+                    <li>Want clarity instead of spreadsheets</li>
+                </ul>
+                <p class="text-gray-700 mt-4">
+                    Everything is designed to be simple, clear, and practical.
+                </p>
+            </div>
+
+                <!-- Feature 4 -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-3">
+                    Save time = Reduce stress
+                </h3>
+                 <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>No more guessing.</li>
+                    <li>No more last-mitute tax panic.</li>
+                </ul>
+
+                <p class="text-gray-700 mt-3">
+                    Pro helps you stay in control of your finances throughout the year.
+                </p>
+            </div>
+
+        </section>
+
+        <div class="mt-6 mb-12 bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
+            <h3 class="text-xl font-semibold mb-4">Looking forward to Pro</h3>
+            <p class="text-gray-700 mb-2">
+                We are actively working to provide the best possible service in the Pro version of the app!
+            </p>
+            <p class="text-gray-700 mb-2">
+                We can’t wait to announce its launch on our website! In the meantime, you can enjoy the free calculator on the homepage.
+            </p>
+            <p class="text-gray-700 mb-2">
+                However, we want you to already understand what we are preparing for you in the subscription version.
+            </p>
+            <p class="text-gray-700 mb-2">
+                This is not just a tax calculator — it is a tool and your secure cloud environment for tracking income, taxes, and expenses, which makes bookkeeping much easier.
+            </p>
+            <p class="text-gray-700 font-medium">
+                We are confident that you will love it!
+            </p>
+        </div>
+
+
+            <!-- Call to action -->
+        <section class="mt-16 bg-gray-50 border border-gray-200 rounded-xl p-8 text-center">
+            <h3 class="text-2xl font-semibold mb-4">
+                Start free. Upgrade when you’re ready.
+            </h3>
+            <p class="text-gray-700 mb-6 max-w-2xl mx-auto">
+                You can start with the free calculator at any time.
+                If you need deeper analytics and long-term tracking, upgrading to Pro is just one step away.
+            </p>
+
+            <div class="flex justify-center gap-4">
+                <a href="/" class="cursor-pointer px-6 py-3 border border-gray-400 rounded-lg hover:bg-gray-100">
+                    Try Free Calculator
+                </a>
+                <button id="upgradeBtn" class="cursor-pointer px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800">
+                    Upgrade to Pro
+                </button>
+            </div>
+
+            <div id="modal" class="fixed inset-0 flex items-center justify-center hidden pointer-events-none">
+                <div class="pointer-events-auto bg-white p-6 rounded-lg shadow-xl max-w-md text-center border">
+                    <h3 class="text-lg font-semibold mb-2">Coming Soon!</h3>
+                    <p class="mb-4">
+                        We’re working hard on the Pro version. In the meantime, enjoy the free calculator!
+                    </p>
+                    <button id="closeModal" class="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-800">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div>
+        <footer class="mt-12 py-6 bg-gray-100 text-center text-sm text-gray-600">
+            <p>&copy; <span id="currentYear"></span> Viktor Spodarenko. All rights reserved.</p>
+            <p>
+                <a href="#" class="underline">Terms of Service</a> |
+                <a href="#" class="underline">Privacy Policy</a>
+            </p>
+            <p>
+                <a href="#" class="underline">Feedback / Contact us</a>
+            </p>
+        </footer>
+    </div>
+
+
+
+    <script src="/js/main.js" defer></script>
+</body>
+</html>
