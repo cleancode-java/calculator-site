@@ -27,31 +27,33 @@
                 }
 
 
-
-                const supabaseUrl = "https://ezixjoupqzlijyocuswx.supabase.co/functions/v1/Tax-calculator-function";
-                const supabaseKey = "sb_publishable_tXBcLSU0KidwZ8ZYFjetTg_FJRbRzXk";
-                const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-
-                try {
-                    const { data, error } = await supabase.functions.invoke('Tax-calculator-function', {
-                        body: { income, expenses, notes }
-                    });
-                    if (error) {
-                        $("#error").text("Server error: " + error.message);
-                        return;
-                    }
-                    // Якщо сервер повернув warning (наприклад, expenses > income)
-                    if (data.warning) {
-                        $("#error").text(data.warning);
-                    }
-                    // Показуємо результат
-                    showResult(data);
-                } catch (err) {
-                    console.error(err);
-                    $("#error").text("Server error. Please try again.");
-                }
+                 // --- асинхронний виклик серверу ---
+        async function callServer() {
+                        const supabaseUrl = "https://ezixjoupqzlijyocuswx.supabase.co/functions/v1/Tax-calculator-function";
+                        const supabaseKey = "sb_publishable_tXBcLSU0KidwZ8ZYFjetTg_FJRbRzXk";
+                        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
         
+        
+                        try {
+                            const { data, error } = await supabase.functions.invoke('Tax-calculator-function', {
+                                body: { income, expenses, notes }
+                            });
+                            if (error) {
+                                $("#error").text("Server error: " + error.message);
+                                return;
+                            }
+                            // Якщо сервер повернув warning (наприклад, expenses > income)
+                            if (data.warning) {
+                                $("#error").text(data.warning);
+                            }
+                            // Показуємо результат
+                            showResult(data);
+                        } catch (err) {
+                            console.error(err);
+                            $("#error").text("Server error. Please try again.");
+                        }
+                }
+                callServer(); // виклик асинхронної функції  
             });
 
         });
@@ -213,3 +215,4 @@ function updateText(id, value) {
 
 
         
+
