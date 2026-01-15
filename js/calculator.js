@@ -36,7 +36,7 @@ $(document).ready(function(){
         // --- асинхронний виклик серверу ---
 async function callServer(income, expenses, notes) {
                 try {
-                    const { data, error } = await supabase.functions.invoke('Tax-calculator-function', {
+                    const { data, error } = await supabaseClient.functions.invoke('Tax-calculator-function', {
                         body: { income, expenses, notes }
                     });
                     if (error) {
@@ -212,6 +212,7 @@ function updateText(id, value) {
 
 
         
+
 
 
 
