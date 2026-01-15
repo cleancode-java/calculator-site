@@ -1,6 +1,6 @@
 const supabaseUrl = "https://ezixjoupqzlijyocuswx.supabase.co";
 const supabaseKey = "sb_publishable_tXBcLSU0KidwZ8ZYFjetTg_FJRbRzXk";
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 $(document).ready(function(){
             // Assign a "click" event handler to the button with ID
@@ -212,5 +212,6 @@ function updateText(id, value) {
 
 
         
+
 
 
