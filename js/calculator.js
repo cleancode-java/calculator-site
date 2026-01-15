@@ -1,62 +1,59 @@
+const supabaseUrl = "https://ezixjoupqzlijyocuswx.supabase.co";
+const supabaseKey = "sb_publishable_tXBcLSU0KidwZ8ZYFjetTg_FJRbRzXk";
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-        $(document).ready(function(){
+$(document).ready(function(){
             // Assign a "click" event handler to the button with ID
             $("#calculateBtn").click(function(event){
                 // Stop the default browser behavior (preventDafault)
                 // This is necessary so that the page does not reload after clicking the button
                 // since it usually works as a "submit" for a form
                 event.preventDefault(); 
-
+        
                 const income = Number($("#annual-gross-income").val());
                 const expenses = Number($("#allowable-expenses").val());
                 // which better - write note in this section, or without notes?
                 let notes = $("#notes").val(); 
             
-
+        
                 $("#error").text("");
-
+        
                 const validation = validateInputs(income,expenses);
-
+        
                 if (validation.error) {
                     $("#error").text(validation.error);
                     return;
                 }
-
+        
                 if (validation.warning) {
                     $("#error").text(validation.warning);
                 }
-
-
-                 // --- асинхронний виклик серверу ---
-        async function callServer() {
-                        const supabaseUrl = "https://ezixjoupqzlijyocuswx.supabase.co/functions/v1/Tax-calculator-function";
-                        const supabaseKey = "sb_publishable_tXBcLSU0KidwZ8ZYFjetTg_FJRbRzXk";
-                        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-        
-        
-                        try {
-                            const { data, error } = await supabase.functions.invoke('Tax-calculator-function', {
-                                body: { income, expenses, notes }
-                            });
-                            if (error) {
-                                $("#error").text("Server error: " + error.message);
-                                return;
-                            }
-                            // Якщо сервер повернув warning (наприклад, expenses > income)
-                            if (data.warning) {
-                                $("#error").text(data.warning);
-                            }
-                            // Показуємо результат
-                            showResult(data);
-                        } catch (err) {
-                            console.error(err);
-                            $("#error").text("Server error. Please try again.");
-                        }
-                }
-                callServer(); // виклик асинхронної функції  
-            });
+                callServer(income, expenses, notes); // виклик асинхронної функції  
 
         });
+
+});            
+        // --- асинхронний виклик серверу ---
+async function callServer(income, expenses, notes) {
+                try {
+                    const { data, error } = await supabase.functions.invoke('Tax-calculator-function', {
+                        body: { income, expenses, notes }
+                    });
+                    if (error) {
+                        $("#error").text("Server error: " + error.message);
+                        return;
+                    }
+                    // Якщо сервер повернув warning (наприклад, expenses > income)
+                    if (data.warning) {
+                        $("#error").text(data.warning);
+                    }
+                    // Показуємо результат
+                    showResult(data);
+                } catch (err) {
+                    console.error(err);
+                    $("#error").text("Server error. Please try again.");
+                }
+        }
 
 
         function validateInputs (income, expenses){
@@ -215,4 +212,5 @@ function updateText(id, value) {
 
 
         
+
 
