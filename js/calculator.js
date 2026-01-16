@@ -1,85 +1,73 @@
 const supabaseUrl = "https://ezixjoupqzlijyocuswx.supabase.co";
-const supabaseKey = "sb_publishable_tXBcLSU0KidwZ8ZYFjetTg_FJRbRzXk";
+const supabaseKey = "sb_publishable_tXBcLSU0KidwZ8ZYFjetTg_FJRbRzXk"; // publishable key
 
-$(document).ready(function(){
-            // Assign a "click" event handler to the button with ID
-            $("#calculateBtn").click(function(event){
-                // Stop the default browser behavior (preventDafault)
-                // This is necessary so that the page does not reload after clicking the button
-                // since it usually works as a "submit" for a form
-                event.preventDefault(); 
-        
-                const income = Number($("#annual-gross-income").val());
-                const expenses = Number($("#allowable-expenses").val());
-                // which better - write note in this section, or without notes?
-                let notes = $("#notes").val(); 
-            
-        
-                $("#error").text("");
-        
-                const validation = validateInputs(income,expenses);
-        
-                if (validation.error) {
-                    $("#error").text(validation.error);
-                    return;
-                }
-        
-                if (validation.warning) {
-                    $("#error").text(validation.warning);
-                }
-                callServer(income, expenses, notes); // виклик асинхронної функції  
+$(document).ready(function() {
+  $("#calculateBtn").click(function(event) {
+    event.preventDefault();
 
-        });
+    const income = Number($("#annual-gross-income").val());
+    const expenses = Number($("#allowable-expenses").val());
+    const notes = $("#notes").val();
 
-});            
-        // --- асинхронний виклик серверу ---
+    $("#error").text("");
+
+    const validation = validateInputs(income, expenses);
+    if (validation.error) {
+      $("#error").text(validation.error);
+      return;
+    }
+    if (validation.warning) {
+      $("#error").text(validation.warning);
+    }
+
+    callServer(income, expenses, notes);
+  });
+});
+
+// --- Виклик Edge Function ---
 async function callServer(income, expenses, notes) {
-                try {
-                const response = await fetch(
-                  "https://ezixjoupqzlijyocuswx.supabase.co/functions/v1/Tax-calculator-function",
-                  {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                      "Authorization": `Bearer ${supabaseKey}`,
-                    },
-                    body: JSON.stringify({ income, expenses, notes })
-                  }
-                );
+  try {
+    const response = await fetch(
+      "https://ezixjoupqzlijyocuswx.supabase.co/functions/v1/Tax-calculator-function",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${supabaseKey}`
+        },
+        body: JSON.stringify({ income, expenses, notes })
+      }
+    );
 
-                if (!response.ok) {
-                  throw new Error(`Server error: ${response.status}`);
-                 }
-            
-                const data = await response.json();
-                    // Якщо сервер повернув warning (наприклад, expenses > income)
-                    if (data.warning) {
-                        $("#error").text(data.warning);
-                    }
-                    // Показуємо результат
-                    showResult(data);
-                } catch (err) {
-                    console.error(err);
-                    $("#error").text("Server error. Please try again.");
-                }
-        }
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status}`);
+    }
 
+    const data = await response.json();
 
-        function validateInputs (income, expenses){
-            if (isNaN(income) || isNaN(expenses)){
-                return { error: "Please enter valid number for encome and expenses"};
-            }
+    if (data.warning) $("#error").text(data.warning);
 
-            if (income < 0 || expenses < 0) {
-                return { error: "Income and expenses must be positive numbers"};
-            }
+    showResult(data);
 
-            if (expenses > income) {
-                return {warning: "Expenses exceed income"};
-            }
+  } catch (err) {
+    console.error(err);
+    $("#error").text("Server error. Please try again.");
+  }
+}
 
-            return {valid: true};
-        }
+// --- Валідація ---
+function validateInputs(income, expenses) {
+  if (isNaN(income) || isNaN(expenses)) {
+    return { error: "Please enter valid numbers for income and expenses" };
+  }
+  if (income < 0 || expenses < 0) {
+    return { error: "Income and expenses must be positive numbers" };
+  }
+  if (expenses > income) {
+    return { warning: "Expenses exceed income" };
+  }
+  return { valid: true };
+}
 
 
         // функція виводу (showeResult)
@@ -221,6 +209,7 @@ function updateText(id, value) {
 
 
         
+
 
 
 
