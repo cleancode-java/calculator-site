@@ -1,6 +1,5 @@
 const supabaseUrl = "https://ezixjoupqzlijyocuswx.supabase.co";
 const supabaseKey = "sb_publishable_tXBcLSU0KidwZ8ZYFjetTg_FJRbRzXk";
-const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 $(document).ready(function(){
             // Assign a "click" event handler to the button with ID
@@ -43,7 +42,6 @@ async function callServer(income, expenses, notes) {
                     headers: {
                       "Content-Type": "application/json",
                       "Authorization": `Bearer ${supabaseKey}`,
-                      "apikey": supabaseKey
                     },
                     body: JSON.stringify({ income, expenses, notes })
                   }
@@ -223,6 +221,7 @@ function updateText(id, value) {
 
 
         
+
 
 
 
