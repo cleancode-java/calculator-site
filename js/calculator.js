@@ -36,13 +36,24 @@ $(document).ready(function(){
         // --- асинхронний виклик серверу ---
 async function callServer(income, expenses, notes) {
                 try {
-                    const { data, error } = await supabaseClient.functions.invoke('Tax-calculator-function', {
-                        body: { income, expenses, notes }
-                    });
-                    if (error) {
-                        $("#error").text("Server error: " + error.message);
-                        return;
-                    }
+                const response = await fetch(
+                  "https://ezixjoupqzlijyocuswx.supabase.co/functions/v1/Tax-calculator-function",
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                      "Authorization": `Bearer ${supabaseKey}`,
+                      "apikey": supabaseKey
+                    },
+                    body: JSON.stringify({ income, expenses, notes })
+                  }
+                );
+
+                if (!response.ok) {
+                  throw new Error(`Server error: ${response.status}`);
+                 }
+            
+                const data = await response.json();
                     // Якщо сервер повернув warning (наприклад, expenses > income)
                     if (data.warning) {
                         $("#error").text(data.warning);
@@ -212,6 +223,7 @@ function updateText(id, value) {
 
 
         
+
 
 
 
