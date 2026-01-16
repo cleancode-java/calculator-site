@@ -34,6 +34,7 @@ $(document).ready(function(){
 
 });            
         // --- асинхронний виклик серверу ---
+const supabaseKey = "sb_publishable_tXBcLSU0KidwZ8ZYFjetTg_FJRbRzXk";
 async function callServer(income, expenses, notes) {
                 try {
                 const response = await fetch(
@@ -223,6 +224,7 @@ function updateText(id, value) {
 
 
         
+
 
 
 
