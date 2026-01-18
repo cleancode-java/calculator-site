@@ -32,7 +32,7 @@ async function callServer(income, expenses, notes) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${sb_publishable_tXBcLSU0KidwZ8ZYFjetTg_FJRbRzXk}`
+          "Authorization": "Bearer sb_publishable_tXBcLSU0KidwZ8ZYFjetTg_FJRbRzXk"
         },
         body: JSON.stringify({ income, expenses, notes })
       }
@@ -208,6 +208,7 @@ function updateText(id, value) {
 
 
         
+
 
 
 
