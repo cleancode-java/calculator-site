@@ -1,5 +1,4 @@
 const supabaseUrl = "https://ezixjoupqzlijyocuswx.supabase.co";
-const supabaseKey = "sb_publishable_tXBcLSU0KidwZ8ZYFjetTg_FJRbRzXk"; // publishable key
 
 $(document).ready(function() {
   $("#calculateBtn").click(function(event) {
@@ -32,8 +31,7 @@ async function callServer(income, expenses, notes) {
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${supabaseKey}`
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({ income, expenses, notes })
       }
@@ -209,6 +207,7 @@ function updateText(id, value) {
 
 
         
+
 
 
 
