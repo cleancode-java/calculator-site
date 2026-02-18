@@ -1,6 +1,27 @@
-const supabaseUrl = "https://ezixjoupqzlijyocuswx.supabase.co";
+const supabaseUrl = "https://ezixjoupqzlijyocuswx.supabase.co/functions/v1/Tax-calculator-function";
 
-$(document).ready(function() {
+$(document).ready(async function() {
+
+  // --- 1. Гарантуємо, що користувач має guest session
+async function ensureGuestSession() {
+  const { data: { session } } = await window.supabase.auth.getSession();
+
+  if (!session) {
+    const { data, error: anonError } = await window.supabase.auth.signInAnonymously();
+    if (anonError) {
+      console.error("Cannot sign in anonymously:", anonError);
+      $("#error").text("Cannot create guest session. Check browser privacy settings.");
+      return null;
+    }
+    return data.session;
+  }
+
+  return session;
+}
+
+  await ensureGuestSession(); // викликаємо один раз при завантаженні сторінки
+
+  // --- 2. Логіка кнопки Calculate
   $("#calculateBtn").click(function(event) {
     event.preventDefault();
 
@@ -21,18 +42,20 @@ $(document).ready(function() {
 
     callServer(income, expenses, notes);
   });
+
 });
 
 // --- Виклик Edge Function ---
 async function callServer(income, expenses, notes) {
   try {
+    const { data: { session } } = await window.supabase.auth.getSession();
     const response = await fetch(
-      "https://ezixjoupqzlijyocuswx.supabase.co/functions/v1/Tax-calculator-function",
+      supabaseUrl,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer sb_publishable_tXBcLSU0KidwZ8ZYFjetTg_FJRbRzXk"
+          "Authorization": `Bearer ${session.access_token}`
         },
         body: JSON.stringify({ income, expenses, notes })
       }
@@ -69,77 +92,77 @@ function validateInputs(income, expenses) {
 }
 
 
-        // функція виводу (showeResult)
-        function showResult(data){
-            $("#result").html(`
-                <p>Profit: ${data.profit.toFixed(2)}</p>
-                <p>Income Tax: ${data.incomeTax.toFixed(2)}</p>
-                    <ul>
-                        <li>0%: ${data.incomeTaxBreakdown.zeroRate.tax.toFixed(2)}</li>
-                        <li>20%: ${data.incomeTaxBreakdown.basicRate.tax.toFixed(2)}</li>
-                        <li>40%: ${data.incomeTaxBreakdown.higherRate.tax.toFixed(2)}</li>
-                        <li>45%: ${data.incomeTaxBreakdown.additionalRate.tax.toFixed(2)}</li>
-                    </ul>
-                <p>National Insurance (total): ${data.ni.toFixed(2)}</p>
-                    <ul>
-                        <li>0%: ${data.niBreakdown.zeroRate.tax.toFixed(2)}</li>
-                        <li>6%: ${data.niBreakdown.basicRate.tax.toFixed(2)}</li>
-                        <li>2%: ${data.niBreakdown.higherRate.tax.toFixed(2)}</li>
-                    </ul>
-                <p>Net Income: ${data.netIncome.toFixed(2)}</p>
-                <p>Effective Marginal Rate: ${getEffectiveRate(data.profit)}%</p>
-                <p><strong>Notes: <span id="notesOutput"></span></strong></p>
-            `);
-            $("#notesOutput").text(data.notes);
+// функція виводу (showeResult)
+function showResult(data){
+    $("#result").html(`
+        <p>Profit: ${data.profit.toFixed(2)}</p>
+        <p>Income Tax: ${data.incomeTax.toFixed(2)}</p>
+            <ul>
+                <li>0%: ${data.incomeTaxBreakdown.zeroRate.tax.toFixed(2)}</li>
+                <li>20%: ${data.incomeTaxBreakdown.basicRate.tax.toFixed(2)}</li>
+                <li>40%: ${data.incomeTaxBreakdown.higherRate.tax.toFixed(2)}</li>
+                <li>45%: ${data.incomeTaxBreakdown.additionalRate.tax.toFixed(2)}</li>
+            </ul>
+        <p>National Insurance (total): ${data.ni.toFixed(2)}</p>
+            <ul>
+                <li>0%: ${data.niBreakdown.zeroRate.tax.toFixed(2)}</li>
+                <li>6%: ${data.niBreakdown.basicRate.tax.toFixed(2)}</li>
+                <li>2%: ${data.niBreakdown.higherRate.tax.toFixed(2)}</li>
+            </ul>
+        <p>Net Income: ${data.netIncome.toFixed(2)}</p>
+        <p>Effective Marginal Rate: ${data.effectiveRate}%</p>
+        <p><strong>Notes: <span id="notesOutput"></span></strong></p>
+    `);
+    $("#notesOutput").text(data.notes);
 
-            // наступний елемент коду для того, щоб текст пояснень chart та таблиці появлявся після обчислення разом з chart. А до обчислення він hidden
-                //  Показуємо блок результатів
-                const resultsContainer = document.getElementById('resultsContainer');
-                if (resultsContainer) resultsContainer.classList.remove('hidden');
-
-
-                //  Оновлюємо текст описів Pie Chart
-                updateText('profitPie', data.profit);
-                updateText('incomeTaxPie', data.incomeTax);
-                updateText('niAt0Pie', data.niBreakdown.zeroRate.tax);
-                updateText('niAt6Pie', data.niBreakdown.basicRate.tax);
-                updateText('niAt2Pie', data.niBreakdown.higherRate.tax);
-                updateText('netIncomePie', data.netIncome);
-
-                //  Оновлюємо текст описів Bar Chart
-                updateText('profitBarChart', data.profit);
-                updateText('taxPABarChart', data.incomeTaxBreakdown.zeroRate.tax);
-                updateText('taxBasicBarChart', data.incomeTaxBreakdown.basicRate.tax);
-                updateText('taxHigherBarChart', data.incomeTaxBreakdown.higherRate.tax);
-                updateText('taxAdditionalBarChart', data.incomeTaxBreakdown.additionalRate.tax);
-                updateText('ni0BarChart', data.niBreakdown.zeroRate.tax);
-                updateText('ni6BarChart', data.niBreakdown.basicRate.tax);
-                updateText('ni2BarChart', data.niBreakdown.higherRate.tax);
-                updateText('niTotalBarChart', data.ni);
-                updateText('netIncomeBarChart', data.netIncome);
+    // наступний елемент коду для того, щоб текст пояснень chart та таблиці появлявся після обчислення разом з chart. А до обчислення він hidden
+        //  Показуємо блок результатів
+        const resultsContainer = document.getElementById('resultsContainer');
+        if (resultsContainer) resultsContainer.classList.remove('hidden');
 
 
+        //  Оновлюємо текст описів Pie Chart
+        updateText('profitPie', data.profit);
+        updateText('incomeTaxPie', data.incomeTax);
+        updateText('niAt0Pie', data.niBreakdown.zeroRate.tax);
+        updateText('niAt6Pie', data.niBreakdown.basicRate.tax);
+        updateText('niAt2Pie', data.niBreakdown.higherRate.tax);
+        updateText('netIncomePie', data.netIncome);
+
+        //  Оновлюємо текст описів Bar Chart
+        updateText('profitBarChart', data.profit);
+        updateText('taxPABarChart', data.incomeTaxBreakdown.zeroRate.tax);
+        updateText('taxBasicBarChart', data.incomeTaxBreakdown.basicRate.tax);
+        updateText('taxHigherBarChart', data.incomeTaxBreakdown.higherRate.tax);
+        updateText('taxAdditionalBarChart', data.incomeTaxBreakdown.additionalRate.tax);
+        updateText('ni0BarChart', data.niBreakdown.zeroRate.tax);
+        updateText('ni6BarChart', data.niBreakdown.basicRate.tax);
+        updateText('ni2BarChart', data.niBreakdown.higherRate.tax);
+        updateText('niTotalBarChart', data.ni);
+        updateText('netIncomeBarChart', data.netIncome);
 
 
-            if (typeof window.updatePieChart === "function") {
-                window.updatePieChart({
-                    "Income Tax": data.incomeTax,
-                    "NI 0%": data.niBreakdown.zeroRate.tax,
-                    "NI 6%": data.niBreakdown.basicRate.tax,
-                    "NI 2%": data.niBreakdown.higherRate.tax,
-                    });
-                }
-                updateBarChart(data);
 
-            if (typeof updateBarChart === "function") updateBarChart(data);
-            
-            updateTaxTable(data);
-        
+
+    if (typeof window.updatePieChart === "function") {
+        window.updatePieChart({
+            "Income Tax": data.incomeTax,
+            "NI 0%": data.niBreakdown.zeroRate.tax,
+            "NI 6%": data.niBreakdown.basicRate.tax,
+            "NI 2%": data.niBreakdown.higherRate.tax,
+            });
         }
+        updateBarChart(data);
+
+    if (typeof updateBarChart === "function") updateBarChart(data);
+    
+    updateTaxTable(data);
+
+}
 
 
 
-        // Нова функція для підстановки даних у таблицю
+  // Нова функція для підстановки даних у таблицю
 function updateTaxTable(data) {
   // Profit
   document.getElementById('profitAmount').textContent = data.profit.toFixed(2);
@@ -186,12 +209,14 @@ window.updateReportTitle = function () {
   const input = document.getElementById('reportTitleInput');
   const title = document.getElementById('reportTitle');
 
-  if (!title) return;
+  if (!input || !title) return;
 
-  title.textContent =
-    input && input.value
-      ? input.value
-      : 'Tax Report';
+  // Копіюємо текст у заголовок тільки якщо користувач щось ввів
+  if (input.value.trim() !== "") {
+    title.textContent = input.value;
+  } else {
+    title.textContent = ""; // залишаємо порожнім
+  }
 };
 
 window.exportTaxReportToPDF = function () {
@@ -200,25 +225,10 @@ window.exportTaxReportToPDF = function () {
 };
 
 
+
 // Універсальна функція для підстановки чисел у span
 function updateText(id, value) {
     const el = document.getElementById(id);
     if (el) el.textContent = value.toFixed(2);
 }
-
-
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
