@@ -6,52 +6,129 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>FinLoggy: Income Tax Calculator</title>
+    <title>AcciVell: Income Tax Calculator</title>
 </head>
 <body class="bg-gray-100 text-gray-900">
     <div id="header"></div>
 
 
-    <main class="max-w-6xl mx-auto px-6 py-16">
+<main class="max-w-4xl mx-auto px-6 py-16">
 
-        <!-- Intro section -->
-        <section class="mb-12">
-            <h1 class="text-2xl font-bold mb-6 leading-tight">
-                Understand your income and taxes
-            </h1>
+    <section>
 
-            <p class="text-lg text-gray-700 max-w-4xl mb-4">
-                <span class="font-semibold text-gray-900">
-                    FinLoggy helps self-employed professionals understand and manage their income and taxes in the UK.
-                </span>
-            </p>
+        <h1 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+            Understand your income. Plan with confidence.
+        </h1>
 
-            <p class="text-lg text-gray-600 max-w-4xl mb-4">
-                Start with a free tax calculator and instant visual breakdowns.
-                See how your income, taxes, and net earnings are calculated -
-                clearly and transparently.
-            </p>
+        <p class="text-lg text-gray-700 mb-4">
+            AcciVell helps self-employed professionals calculate taxes,
+            track net income, and compare financial performance over time.
+        </p>
 
-            <p class="text-lg text-gray-600 max-w-4xl">
-                When you’re ready, Pro helps you go beyond a single calculation
-                and gain financial clarity over time.
-            </p>
-        </section>
+        <p class="text-base text-gray-600">
+            Turn your numbers into clear, visual financial insight 
+            with instant breakdowns, structured summaries, and forecasting tools —
+            all in one dashboard.
+        </p>
 
-    </main>
+    </section>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+</main>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-1">
+        <div class="w-full p-2 border border-gray-300 rounded shadow-sm">
+            <aside class="p-4 border border-gray-200 rounded bg-white text-sm text-gray-700">
+                <div class="mb-6">
+                    <h3 class="font-semibold text-base mb-3">
+                        How to use this calculator
+                    </h3>
+                    <p class="mb-3">
+                        To calculate your estimated UK self-employed taxes:
+                    </p>
+                    <ul class="list-disc list-inside space-y-1 mb-3">
+                        <li>
+                            Enter your <strong>Annual gross income</strong>.
+                        </li>
+                        <li>
+                            Enter <strong>Allowable expenses</strong> (if applicable).
+                        </li>
+                        <li>
+                            Optionally add notes for your own reference.
+                        </li>
+                        <li>
+                            Click <strong>Calculate Taxes</strong> to view your results.
+                        </li>
+                    </ul>
+
+                    <p class="text-gray-600">
+                        The results will appear below as charts and a detailed tax table.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-base mb-3">
+                        How these numbers are calculated
+                    </h3>
+
+                    <p class="mb-3">
+                        This calculator estimates your <strong>UK self-employed taxes</strong>
+                        using <strong>official HMRC tax bands and rates</strong>.
+                    </p>
+
+                    <p class="mb-2 font-medium">It includes:</p>
+                    <ul class="list-disc list-inside mb-4 space-y-1">
+                        <li>Income Tax (progressive / tiered bands)</li>
+                        <li>Personal Allowance, including reduction for income above £100,000</li>
+                        <li>Class 4 National Insurance</li>
+                        <li>Profit calculation based on allowable expenses</li>
+                    </ul>
+
+                    <p class="mb-2 font-medium">Effective marginal rate</p>
+
+                    <p class="mb-3">
+                        The <strong>effective marginal rate</strong> shows how much tax applies
+                        to your <strong>next £1 of income</strong>, not to your total profit.
+                    </p>
+
+                    <p class="mb-3">
+                        Between <strong>£100,000 and £125,140</strong>, the marginal rate is higher because:
+                    </p>
+
+                    <ul class="list-disc list-inside mb-3 space-y-1">
+                        <li>your income is taxed at the <strong>40% higher rate</strong>, and</li>
+                        <li> part of your <strong>Personal Allowance is withdrawn</strong>,
+                            making additional income taxable.
+                        </li>
+                    </ul>
+
+                    <p class="mb-3">
+                        This results in a higher effective marginal tax rate in this income range,
+                        due to the combined effect of higher-rate Income Tax and the withdrawal of the Personal Allowance.
+                    </p>
+
+                    <p class="mb-3">
+                        National Insurance is calculated separately and is
+                        <strong>not affected</strong> by Personal Allowance.
+                    </p>
+
+                    <p class="font-medium">
+                        This calculator applies all taxes progressively and does
+                        <strong>not apply a single flat rate</strong> to your income.
+                    </p>
+                </div>
+            </aside>
+        </div>
+
         <form class="flex flex-col gap-4 p-4 border border-gray-300 rounded shadow-sm bg-white">
             <div class="flex flex-col gap-4 w-full">
                 <div id="incomeSection" class="w-full p-2 border border-gray-300 rounded shadow-sm">
                     <div class="w-full sm:w-full md:w-1/2 lg:w-1/3">
                         <label for="annual-gross-income" class="block mb-1">Annual gross income</label>
-                        <input type="number" id="annual-gross-income" placeholder="Type your annual gross" class="w-full p-2 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-emerald-600">
+                        <input type="number" id="annual-gross-income" placeholder="Type your annual gross" class="w-full p-2 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-fuchsia-600">
                     </div>
             
                     <div class="w-full sm:w-full md:w-1/2 lg:w-1/3">
                         <label for="allowable-expenses" class="block mb-1">Allowable expenses</label>
-                        <input type="number" id="allowable-expenses" placeholder="Type allowable expensees" class="w-full p-2 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-emerald-600">
+                        <input type="number" id="allowable-expenses" placeholder="Type allowable expensees" class="w-full p-2 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-fuchsia-600">
                     </div>
 
                     <div class="text-sm text-gray-600 mt-2">
@@ -64,11 +141,11 @@
 
                     <div class="w-full mt-6">
                         <label for="notes" class="block mb-1 text-gray-700">Notes (optional)</label>
-                        <textarea id="notes" rows="3" class="w-full p-2 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-emerald-600" placeholder="Any notes... For example: My income and taxes for 2025"></textarea>
+                        <textarea id="notes" rows="3" class="w-full p-2 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-fuchsia-600" placeholder="Any notes... For example: My income and taxes for 2025"></textarea>
                     </div>
 
                     <div class="w-full sm:w-full md:w-1/2 lg:w-1/3">
-                        <button id="calculateBtn" type="submit" class="w-full bg-emerald-600 text-white p-2 rounded hover:bg-emerald-700">
+                        <button id="calculateBtn" type="submit" class="cursor-pointer w-full bg-gradient-to-r from-fuchsia-600 to-fuchsia-700 text-white p-2 rounded hover:opacity-90 transition font-semibold shadow-md">
                             Calculate Taxes
                         </button>
                     </div>
@@ -90,86 +167,6 @@
                 </div>
             </div>
         </form>
-
-        <aside class="p-4 border border-gray-200 rounded bg-white text-sm text-gray-700">
-            <div class="mb-6">
-                <h3 class="font-semibold text-base mb-3">
-                    How to use this calculator
-                </h3>
-                <p class="mb-3">
-                    To calculate your estimated UK self-employed taxes:
-                </p>
-                <ul class="list-disc list-inside space-y-1 mb-3">
-                    <li>
-                        Enter your <strong>Annual gross income</strong>.
-                    </li>
-                    <li>
-                        Enter <strong>Allowable expenses</strong> (if applicable).
-                    </li>
-                    <li>
-                        Optionally add notes for your own reference.
-                    </li>
-                    <li>
-                        Click <strong>Calculate Taxes</strong> to view your results.
-                    </li>
-                </ul>
-
-                <p class="text-gray-600">
-                    The results will appear below as charts and a detailed tax table.
-                </p>
-            </div>
-            <div>
-                <h3 class="font-semibold text-base mb-3">
-                    How these numbers are calculated
-                </h3>
-
-                <p class="mb-3">
-                    This calculator estimates your <strong>UK self-employed taxes</strong>
-                    using <strong>official HMRC tax bands and rates</strong>.
-                </p>
-
-                <p class="mb-2 font-medium">It includes:</p>
-                <ul class="list-disc list-inside mb-4 space-y-1">
-                    <li>Income Tax (progressive / tiered bands)</li>
-                    <li>Personal Allowance, including reduction for income above £100,000</li>
-                    <li>Class 4 National Insurance</li>
-                    <li>Profit calculation based on allowable expenses</li>
-                </ul>
-
-                <p class="mb-2 font-medium">Effective marginal rate</p>
-
-                <p class="mb-3">
-                    The <strong>effective marginal rate</strong> shows how much tax applies
-                    to your <strong>next £1 of income</strong>, not to your total profit.
-                </p>
-
-                <p class="mb-3">
-                    Between <strong>£100,000 and £125,140</strong>, the marginal rate is higher because:
-                </p>
-
-                <ul class="list-disc list-inside mb-3 space-y-1">
-                    <li>your income is taxed at the <strong>40% higher rate</strong>, and</li>
-                    <li> part of your <strong>Personal Allowance is withdrawn</strong>,
-                        making additional income taxable.
-                    </li>
-                </ul>
-
-                <p class="mb-3">
-                    This results in a higher effective marginal tax rate in this income range,
-                    due to the combined effect of higher-rate Income Tax and the withdrawal of the Personal Allowance.
-                </p>
-
-                <p class="mb-3">
-                    National Insurance is calculated separately and is
-                    <strong>not affected</strong> by Personal Allowance.
-                </p>
-
-                <p class="font-medium">
-                    This calculator applies all taxes progressively and does
-                    <strong>not apply a single flat rate</strong> to your income.
-                </p>
-            </div>
-        </aside>
 
 
 
@@ -445,7 +442,7 @@
             </p>
         </div>
         <a href="why-choose-pro.html" 
-        class="cursor-pointer ml-4 px-4 py-2 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white text-sm rounded-lg hover:opacity-90 transition font-semibold shadow-md">
+        class="cursor-pointer ml-4 px-4 py-2 bg-gradient-to-r from-fuchsia-600 to-fuchsia-900 text-white text-sm rounded-lg hover:opacity-90 transition font-semibold shadow-md">
             Unlock Pro
         </a>
     </div>
@@ -453,7 +450,7 @@
     <div>
         <footer class="mt-12 py-6 bg-gray-100 text-center text-sm text-gray-600">
             <p>This tool provides an estimate only and does not replace professional tax advice or an HMRC calculation.</p>
-            <p>&copy; <span id="currentYear"></span> FinLoggy. All rights reserved.</p>
+            <p>&copy; <span id="currentYear"></span> AcciVell. All rights reserved.</p>
             <p>
                 <a href="terms-of-service.html" class="underline">Terms of Service</a> |
                 <a href="privacy.html" class="underline">Privacy Policy</a>
@@ -522,4 +519,3 @@ window.supabase = supabase.createClient(
 
 </body>
 </html>
-
