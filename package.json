@@ -1,0 +1,12 @@
+{
+  "name": "feedback-project",
+  "version": "1.0.0",
+  "description": "Feedback form sending emails via Resend",
+  "main": "index.js",
+  "scripts": {
+    "start": "netlify dev"
+  },
+  "dependencies": {
+    "resend": "^1.0.0"
+  }
+}
