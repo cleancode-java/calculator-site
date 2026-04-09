@@ -162,7 +162,7 @@ function showResult(data){
 
 
 
-  // Нова функція для підстановки даних у таблицю
+    // New function for substituting data into a table
 function updateTaxTable(data) {
   // Profit
   document.getElementById('profitAmount').textContent = data.profit.toFixed(2);
@@ -186,6 +186,11 @@ function updateTaxTable(data) {
   // Class 4 National Insurance total
   document.getElementById('niTotal').textContent = data.ni.toFixed(2);
 
+  // NI Taxable amounts (new ✅)
+  document.getElementById('ni0Amount').textContent = data.niBreakdown.zeroRate.amount?.toFixed(2) || '0.00';
+  document.getElementById('ni6Amount').textContent = data.niBreakdown.basicRate.amount?.toFixed(2) || '0.00';
+  document.getElementById('ni2Amount').textContent = data.niBreakdown.higherRate.amount?.toFixed(2) || '0.00';
+
   // NI Breakdown
   document.getElementById('ni0').textContent = data.niBreakdown.zeroRate.tax.toFixed(2);
   document.getElementById('ni6').textContent = data.niBreakdown.basicRate.tax.toFixed(2);
@@ -194,7 +199,7 @@ function updateTaxTable(data) {
   // Net Income
   document.getElementById('netIncome').textContent = data.netIncome.toFixed(2);
 
-  // Оновлюємо заголовок звіту
+  // Update the report title 
   updateReportTitle();
 }
 
