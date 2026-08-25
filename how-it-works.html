@@ -1,190 +1,599 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary SEO -->
+    <title>How the UK Self-Employed Tax Calculator Works | AcciVell</title>
+
+    <meta
+      name="description"
+      content="Learn how AcciVell estimates UK Income Tax and Class 4 National Insurance for self-employed sole traders. Understand tax bands, Personal Allowance, tapering and Net Income for 2025/26."
+    />
+
+    <meta
+      name="keywords"
+      content="UK self-employed tax calculator, Self Assessment calculator, Class 4 National Insurance calculator, UK Income Tax 2025/26, sole trader tax calculator"
+    />
+
+    <!-- Search engine instructions -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://accivell.com/how-it-works.html" />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="How the UK Self-Employed Tax Calculator Works | AcciVell"
+    />
+
+    <meta
+      property="og:description"
+      content="Learn how AcciVell estimates UK Income Tax, Class 4 National Insurance and Net Income for self-employed sole traders."
+    />
+
+    <meta property="og:type" content="website" />
+
+    <meta property="og:url" content="https://accivell.com/how-it-works.html" />
+
+    <meta property="og:site_name" content="AcciVell" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary" />
+
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <title>Income Tax Calculator</title>
-</head>
-<body class="bg-gray-100 text-gray-900">
-    <div id="header"></div>
+    <style>
+      .tax-flow-step {
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+      }
 
+      .tax-flow-step.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-    <body class="bg-gray-100 text-gray-900">
+      /* Каскадна затримка для ефекту черги */
+      .tax-flow-step[data-step="1"] {
+        transition-delay: 0.1s;
+      }
+      .tax-flow-step[data-step="2"] {
+        transition-delay: 0.2s;
+      }
+      .tax-flow-step[data-step="3"] {
+        transition-delay: 0.3s;
+      }
+      .tax-flow-step[data-step="4"] {
+        transition-delay: 0.4s;
+      }
+      .tax-flow-step[data-step="5"] {
+        transition-delay: 0.5s;
+      }
+      .tax-flow-step[data-step="6"] {
+        transition-delay: 0.6s;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .tax-flow-step {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-900">
     <div id="header"></div>
 
     <main class="max-w-5xl mx-auto px-6 py-12">
+      <!-- Page title -->
+      <section class="mb-8 md:mb-10">
+        <h1 class="text-2xl sm:text-3xl font-bold mb-2.5 leading-tight">
+          How the AcciVell UK Tax Calculator Works
+        </h1>
+        <p class="text-sm sm:text-base text-gray-600 max-w-3xl leading-relaxed">
+          Learn how the AcciVell UK self-employed tax calculator estimates
+          Income Tax and Class 4 National Insurance. See how tax bands, Personal
+          Allowance and the £100,000 allowance taper affect your estimated tax
+          and Net Income.
+        </p>
+      </section>
 
-        <!-- Page title -->
-        <section class="mb-12">
-            <h2 class="text-4xl font-bold mb-4">
-                How it works
-            </h2>
-            <p class="text-lg text-gray-600 max-w-3xl">
-                This page explains how our UK tax calculator works, which tax thresholds and rates are used,
-                and how to interpret the results shown in tables and charts.
+      <!-- Intro highlight -->
+      <section
+        class="mb-8 md:mb-10 border-l-4 border-fuchsia-600 bg-white rounded-r-xl p-4 sm:p-5 md:p-6 shadow-xs"
+      >
+        <p
+          class="text-sm md:text-base lg:text-lg text-gray-700 leading-relaxed"
+        >
+          <strong class="font-semibold text-gray-900">Key takeaway:</strong>
+          The calculator uses official UK tax thresholds and rates to estimate
+          <span class="font-medium text-gray-900">Income Tax</span>,
+          <span class="font-medium text-gray-900"
+            >Class 4 National Insurance</span
+          >, and your estimated
+          <span class="font-medium text-gray-900">Net Income</span>.
+        </p>
+      </section>
+
+      <!-- Content sections -->
+      <section class="space-y-12">
+        <!-- Allowable Business Expenses -->
+        <div>
+          <h2 class="text-2xl font-semibold mb-3">
+            How allowable business expenses affect your tax
+          </h2>
+
+          <p class="text-gray-700 mb-4">
+            If you are self-employed, your tax is generally calculated based on
+            your business profit rather than your total business income.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            The calculator estimates your profit by subtracting your allowable
+            business expenses from your business income:
+          </p>
+
+          <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-4">
+            <p class="font-semibold text-gray-800">
+              Business income − Allowable business expenses = Business profit
             </p>
-        </section>
+          </div>
 
-        <!-- Intro highlight -->
-        <section class="mb-12 bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
-            <p class="text-xl font-semibold text-gray-800">
-                The calculator follows official HMRC rules to estimate Income Tax, Class 4 National Insurance,
-                and your Net Income.
-            </p>
-        </section>
+          <p class="text-gray-700 mb-4">
+            Your estimated business profit is then used to calculate Income Tax
+            and Class 4 National Insurance.
+          </p>
 
-        <!-- Content sections -->
-        <section class="space-y-12">
+          <p class="text-gray-600 mt-4 text-sm">
+            Only expenses that qualify as allowable business expenses should be
+            entered into the calculator. The treatment of expenses can depend on
+            your individual circumstances.
+          </p>
 
-            <!-- Income Tax -->
-            <div>
-                <h3 class="text-2xl font-semibold mb-3">
-                    Income Tax — how it is calculated
-                </h3>
-                <p class="text-gray-700 mb-4">
-                    Income Tax in the UK is calculated using a progressive system. This means that different
-                    portions of your profit are taxed at different rates, depending on the official tax bands.
-                </p>
+          <p class="text-gray-600 mt-4 text-sm">
+            Official guidance:
+            <a
+              href="https://www.gov.uk/expenses-if-youre-self-employed"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-blue-600 underline block mt-1"
+            >
+              HMRC: Expenses if you're self-employed
+            </a>
+          </p>
+        </div>
 
-                <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                    <li><strong>Personal Allowance (0%)</strong>: £0 – £12,570</li>
-                    <li><strong>Basic Rate (20%)</strong>: £12,571 – £50,270</li>
-                    <li><strong>Higher Rate (40%)</strong>: £50,271 – £125,140</li>
-                    <li><strong>Additional Rate (45%)</strong>: £125,141 and above</li>
-                </ul>
-
-                <p class="text-gray-700">
-                    If your adjusted net income exceeds £100,000, your Personal Allowance is reduced.
-                    For every £2 over £100,000, your allowance decreases by £1.
-                    This creates a higher effective tax rate between £100,000 and £125,140.
-                </p>
-
-                <p class="text-gray-600 mt-4 text-sm">
-                    Official source:
-                    <a href="https://www.gov.uk/income-tax-rates"
-                       target="_blank"
-                       class="text-blue-600 underline block mt-1">
-                        HMRC Income Tax rates and allowances
-                    </a>
-                </p>
-            </div>
-
-            <!-- National Insurance -->
-            <div>
-                <h3 class="text-2xl font-semibold mb-3">
-                    Class 4 National Insurance — how it is calculated
-                </h3>
-                <p class="text-gray-700 mb-4">
-                    If you are self-employed, you also pay Class 4 National Insurance contributions.
-                    These are calculated on your annual profit and are not affected by the Personal Allowance.
-                </p>
-
-                <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                    <li><strong>0%</strong> on profits up to £12,570</li>
-                    <li><strong>6%</strong> on profits from £12,571 to £50,270</li>
-                    <li><strong>2%</strong> on profits above £50,270</li>
-                </ul>
-
-                <p class="text-gray-600 mt-4 text-sm">
-                    Official source:
-                    <a href="https://www.gov.uk/government/publications/rates-and-allowances-national-insurance-contributions/rates-and-allowances-national-insurance-contributions"
-                       target="_blank"
-                       class="text-blue-600 underline block mt-1">
-                        HMRC Rates and allowances: National Insurance contributions
-                    </a>
-                    <a href="https://www.gov.uk/national-insurance-rates-letters"
-                       target="_blank"
-                       class="text-blue-600 underline block mt-1">
-                        HMRC National Insurance rates and categories
-                    </a>
-
-                </p>
-            </div>
-
-            <!-- Charts and table -->
-            <div>
-                <h3 class="text-2xl font-semibold mb-3">
-                    Understanding your results
-                </h3>
-                <p class="text-gray-700 mb-4">
-                    After entering your income and expenses, the calculator displays your results
-                    using charts and a detailed table.
-                </p>
-
-                <ul class="list-disc list-inside text-gray-700 space-y-2">
-                    <li>
-                        <strong>Pie Chart</strong> — shows how your total profit is split between
-                        Income Tax, National Insurance, and Net Income.
-                    </li>
-                    <li>
-                        <strong>Bar Chart</strong> — compares your Profit, total taxes, and Net Income
-                        side by side.
-                    </li>
-                    <li>
-                        <strong>Detailed table</strong> — breaks down each tax band, the taxable amount,
-                        and how much tax is due at each rate.
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Why it matters -->
-            <div>
-                <h3 class="text-2xl font-semibold mb-3">
-                    Why this matters for self-employed professionals
-                </h3>
-                <p class="text-gray-700 mb-4">
-                    Understanding how tax and National Insurance are calculated helps you plan your finances,
-                    avoid surprises, and make informed decisions throughout the tax year.
-                </p>
-                <p class="text-gray-700">
-                    This calculator is designed to support self-employed individuals (Class 4)
-                    by turning complex tax rules into clear numbers and visual insights.
-                </p>
-            </div>
-
-        </section>
-
-        <!-- Disclaimer -->
-        <section class="mt-16 bg-gray-50 border border-gray-200 rounded-xl p-6">
+        <!-- How the calculation works — visual flow -->
+        <section class="mb-16">
+          <div class="text-center max-w-2xl mx-auto mb-8">
+            <h3 class="text-2xl font-bold mb-2">How your tax is calculated</h3>
             <p class="text-sm text-gray-600">
-                These calculations are estimates based on current UK tax thresholds and rates.
-                This tool does not replace an official HMRC calculation or professional tax advice.
+              AcciVell converts your business numbers into clear tax liabilities
+              in simple steps.
             </p>
+          </div>
+
+          <!-- Контейнер без білої плашки та без зовнішніх рамок -->
+          <div id="taxFlow" class="w-full">
+            <!-- Step 1 to 3: Compact Timeline Stream -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 relative">
+              <!-- Step 1 -->
+              <div
+                class="tax-flow-step relative bg-white border border-gray-200/80 rounded-xl p-4 flex flex-col justify-between shadow-xs"
+                data-step="1"
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span
+                      class="text-[11px] font-bold uppercase tracking-wider text-fuchsia-700 bg-fuchsia-50 px-2 py-0.5 rounded-full"
+                      >Step 1</span
+                    >
+                    <svg
+                      class="w-5 h-5 text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <h4 class="font-bold text-gray-900 text-base">
+                    Business Income
+                  </h4>
+                  <p class="text-xs text-gray-500 mt-1">
+                    Total revenue from self-employment
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div
+                class="tax-flow-step relative bg-white border border-gray-200/80 rounded-xl p-4 flex flex-col justify-between shadow-xs"
+                data-step="2"
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span
+                      class="text-[11px] font-bold uppercase tracking-wider text-fuchsia-700 bg-fuchsia-50 px-2 py-0.5 rounded-full"
+                      >Step 2</span
+                    >
+                    <svg
+                      class="w-5 h-5 text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <h4 class="font-bold text-gray-900 text-base">
+                    Allowable Expenses
+                  </h4>
+                  <p class="text-xs text-gray-500 mt-1">
+                    Deducted from gross income
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div
+                class="tax-flow-step relative bg-white border border-fuchsia-200/90 rounded-xl p-4 flex flex-col justify-between shadow-xs"
+                data-step="3"
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span
+                      class="text-[11px] font-bold uppercase tracking-wider text-fuchsia-800 bg-fuchsia-100 px-2 py-0.5 rounded-full"
+                      >Step 3</span
+                    >
+                    <svg
+                      class="w-5 h-5 text-fuchsia-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+                  <h4 class="font-bold text-gray-900 text-base">
+                    Taxable Profit
+                  </h4>
+                  <p class="text-xs text-gray-600 mt-1">
+                    Basis for tax calculation
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Divider Arrow -->
+            <div class="tax-flow-step text-center my-3" data-step="4">
+              <span
+                class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-200 text-gray-500 text-xs font-bold"
+                >↓</span
+              >
+            </div>
+
+            <!-- Split Calculations (Income Tax & NI) -->
+            <div
+              class="tax-flow-step grid grid-cols-1 sm:grid-cols-2 gap-3"
+              data-step="5"
+            >
+              <!-- Income Tax -->
+              <div
+                class="border border-purple-200/80 bg-white rounded-xl p-3.5 flex items-start gap-3 shadow-xs"
+              >
+                <div
+                  class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 font-bold flex items-center justify-center text-sm shrink-0"
+                >
+                  £
+                </div>
+                <div>
+                  <h5 class="font-bold text-gray-900 text-sm">Income Tax</h5>
+                  <p class="text-xs text-gray-600 mt-0.5">
+                    Progressive bands (20%, 40%, 45%) with Personal Allowance.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Class 4 NI -->
+              <div
+                class="border border-fuchsia-200/80 bg-white rounded-xl p-3.5 flex items-start gap-3 shadow-xs"
+              >
+                <div
+                  class="w-8 h-8 rounded-lg bg-fuchsia-100 text-fuchsia-700 font-bold flex items-center justify-center text-xs shrink-0"
+                >
+                  NI
+                </div>
+                <div>
+                  <h5 class="font-bold text-gray-900 text-sm">Class 4 NI</h5>
+                  <p class="text-xs text-gray-600 mt-0.5">
+                    Calculated on profit bands above threshold (6% & 2%).
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Final Result Badge -->
+            <div class="tax-flow-step mt-4 text-center" data-step="6">
+              <div
+                class="inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white border border-fuchsia-200 text-xs sm:text-sm shadow-xs"
+              >
+                <span class="text-gray-500 font-medium">Final Result:</span>
+                <span class="font-bold text-fuchsia-800"
+                  >Net Take-Home Income</span
+                >
+              </div>
+            </div>
+          </div>
         </section>
 
+        <!-- Income Tax -->
+        <div>
+          <h2 class="text-2xl font-semibold mb-3">
+            Income Tax — how it is calculated
+          </h2>
+          <p class="text-gray-700 mb-4">
+            Income Tax in the UK is calculated using a progressive system. This
+            means that different portions of your profit are taxed at different
+            rates, depending on the official tax bands.
+          </p>
+
+          <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
+            <li>
+              <strong>Personal Allowance</strong>: up to £12,570 of income may
+              be tax-free, depending on your circumstances.
+            </li>
+
+            <li>
+              <strong>Basic Rate (20%)</strong>: applies to taxable income
+              within the basic rate band.
+            </li>
+
+            <li>
+              <strong>Higher Rate (40%)</strong>: applies to taxable income
+              above the basic rate band.
+            </li>
+
+            <li>
+              <strong>Additional Rate (45%)</strong>: applies to taxable income
+              above £125,140.
+            </li>
+          </ul>
+
+          <p class="text-gray-700">
+            If your adjusted net income exceeds £100,000, your Personal
+            Allowance is reduced. For every £2 over £100,000, your allowance
+            decreases by £1. This creates a higher effective tax rate between
+            £100,000 and £125,140.
+          </p>
+
+          <p class="text-gray-600 mt-4 text-sm">
+            Official source:
+            <a
+              href="https://www.gov.uk/income-tax-rates"
+              target="_blank"
+              class="text-blue-600 underline block mt-1"
+            >
+              HMRC Income Tax rates and allowances
+            </a>
+          </p>
+        </div>
+
+        <!-- National Insurance -->
+        <div>
+          <h2 class="text-2xl font-semibold mb-3">
+            Class 4 National Insurance - how it is calculated
+          </h2>
+          <p class="text-gray-700 mb-4">
+            If you are self-employed, you also pay Class 4 National Insurance
+            contributions. These are calculated on your annual profit and are
+            not affected by the Personal Allowance.
+          </p>
+
+          <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
+            <li><strong>0%</strong> on profits up to £12,570</li>
+            <li><strong>6%</strong> on profits from £12,571 to £50,270</li>
+            <li><strong>2%</strong> on profits above £50,270</li>
+          </ul>
+
+          <p class="text-gray-600 mt-4 text-sm">
+            Official source:
+            <a
+              href="https://www.gov.uk/government/publications/rates-and-allowances-national-insurance-contributions/rates-and-allowances-national-insurance-contributions"
+              target="_blank"
+              class="text-blue-600 underline block mt-1"
+            >
+              HMRC Rates and allowances: National Insurance contributions
+            </a>
+            <a
+              href="https://www.gov.uk/national-insurance-rates-letters"
+              target="_blank"
+              class="text-blue-600 underline block mt-1"
+            >
+              HMRC National Insurance rates and categories
+            </a>
+          </p>
+        </div>
+
+        <!-- Charts and table -->
+        <div>
+          <h2 class="text-2xl font-semibold mb-3">
+            Understanding your results
+          </h2>
+          <p class="text-gray-700 mb-4">
+            After entering your income and expenses, the calculator displays
+            your results using charts and a detailed table.
+          </p>
+
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>
+              <strong>Pie Chart</strong> - shows how your total profit is split
+              between Income Tax, National Insurance, and Net Income.
+            </li>
+            <li>
+              <strong>Bar Chart</strong> - compares your Profit, total taxes,
+              and Net Income side by side.
+            </li>
+            <li>
+              <strong>Detailed table</strong> - breaks down each tax band, the
+              taxable amount, and how much tax is due at each rate.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Why it matters -->
+        <div>
+          <h2 class="text-2xl font-semibold mb-3">
+            Why this matters for self-employed professionals
+          </h2>
+          <p class="text-gray-700 mb-4">
+            Understanding how tax and National Insurance are calculated helps
+            you plan your finances, avoid surprises, and make informed decisions
+            throughout the tax year.
+          </p>
+          <p class="text-gray-700">
+            This calculator is designed to support self-employed individuals
+            (Class 4) by turning complex tax rules into clear numbers and visual
+            insights.
+          </p>
+        </div>
+      </section>
+
+      <!-- Disclaimer -->
+      <section class="mt-16 bg-gray-50 border border-gray-200 rounded-xl p-6">
+        <p class="text-sm text-gray-600">
+          These calculations are estimates based on current UK tax thresholds
+          and rates. This tool does not replace an official HMRC calculation or
+          professional tax advice.
+        </p>
+      </section>
+
+      <!-- Calculator CTA -->
+      <section class="mt-10 md:mt-12 text-center">
+        <div class="max-w-xl mx-auto px-4">
+          <h3 class="text-lg sm:text-xl font-bold mb-2 text-gray-900">
+            Ready to estimate your UK self-employed tax?
+          </h3>
+
+          <p class="text-xs sm:text-sm text-gray-600 mb-5 leading-relaxed">
+            Enter your income and allowable business expenses to see your
+            estimated Income Tax, Class 4 National Insurance, Net Income, and
+            tax breakdown.
+          </p>
+
+          <a
+            href="index.html#incomeSection"
+            class="cursor-pointer inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-fuchsia-600 to-fuchsia-900 text-white text-sm rounded-lg hover:opacity-90 transition font-semibold shadow-md"
+          >
+            Calculate your tax
+            <span class="ml-2">→</span>
+          </a>
+        </div>
+      </section>
     </main>
 
     <div>
-        <footer class="mt-12 py-4 bg-gray-100 text-center text-sm text-gray-600">
-            <p class="mb-0 px-4 md:px-0">
-                &copy; <span id="currentYear"></span>
-                <span class="font-extrabold tracking-tight">
-                    <span class="text-purple-800">Acci</span><span class="text-fuchsia-600">Vell</span>
-                </span> All rights reserved.
-            </p>
+      <footer class="mt-10 py-5 bg-gray-100 text-center text-sm text-gray-600">
+        <!-- Copyright -->
+        <p class="mb-0 px-4 md:px-0 leading-5">
+          &copy; <span id="currentYear"></span>
+          <span class="font-extrabold tracking-tight">
+            <span class="text-purple-800">Acci</span
+            ><span class="text-fuchsia-600">Vell</span>
+          </span>
+          All rights reserved.
+        </p>
 
-            <p class="mb-0 px-4 md:px-0">
-                <a href="terms-of-service.html" class="underline text-gray-700 hover:text-purple-800 transition-colors duration-200">
-                    Terms of Service
-                </a>
-                <span class="mx-2">|</span>
-                <a href="privacy.html" class="underline text-gray-700 hover:text-purple-800 transition-colors duration-200">
-                    Privacy Policy
-                </a>
-            </p>
-            <p class="mt-0 px-4 md:px-0">
-                <a href="contact-us.html" class="underline text-gray-700 hover:text-purple-800 transition-colors duration-200">
-                    Feedback / Contact us
-                </a>
-            </p>
-        </footer>
+        <!-- Legal links -->
+        <p class="mt-0 px-4 md:px-0 leading-5">
+          <a
+            href="terms-of-service.html"
+            class="text-gray-700 hover:text-purple-800 transition-colors duration-200"
+          >
+            Terms of Service
+          </a>
+
+          <span class="mx-2 text-gray-400">|</span>
+
+          <a
+            href="privacy.html"
+            class="text-gray-700 hover:text-purple-800 transition-colors duration-200"
+          >
+            Privacy Policy
+          </a>
+        </p>
+
+        <!-- Contact -->
+        <p class="mt-0 px-4 md:px-0 leading-5">
+          <a
+            href="contact-us.html"
+            class="text-gray-700 hover:text-purple-800 transition-colors duration-200"
+          >
+            Feedback / Contact us
+          </a>
+        </p>
+
+        <!-- Developer credit -->
+        <p class="mt-2 px-4 leading-5 text-gray-500">
+          <span data-i18n="footer_developed_by">
+            Designed &amp; Developed by
+          </span>
+
+          <a
+            href="https://syvellix.com/"
+            class="ml-1 font-bold bg-gradient-to-r from-purple-700 via-fuchsia-700 to-purple-700 bg-[length:250%_auto] bg-clip-text text-transparent animate-shine hover:opacity-80 transition-opacity duration-200"
+          >
+            Syvellix Engineering
+          </a>
+        </p>
+      </footer>
     </div>
-</body>
-
 
     <script src="/js/main.js" defer></script>
-</body>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const steps = document.querySelectorAll(".tax-flow-step");
 
+        if (!steps.length) return;
+
+        const observer = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.15,
+          },
+        );
+
+        steps.forEach((step) => observer.observe(step));
+      });
+    </script>
+  </body>
 </html>

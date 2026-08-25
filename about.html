@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Learn about AcciVell, a UK financial calculation tool built by Syvellix Engineering, and the technology and approach behind the product."
+    />
+
+    <meta
+      name="keywords"
+      content="AcciVell, Syvellix Engineering, UK tax calculator, self-employed tax calculator, financial tools, web applications, interactive calculators"
+    />
+
+    <meta name="robots" content="index, follow" />
+
+    <link rel="canonical" href="https://accivell.com/about.html" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <title>About AcciVell | Built by Syvellix Engineering</title>
+
+    <style>
+      /* =========================================================
+         Syvellix visual system
+      ========================================================= */
+
+      .syvellix-grid {
+        background-image:
+          linear-gradient(rgba(0, 164, 120, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 164, 120, 0.08) 1px, transparent 1px);
+        background-size: 32px 32px;
+      }
+
+      .syvellix-glow {
+        box-shadow:
+          0 0 0 1px rgba(0, 164, 120, 0.12),
+          0 20px 70px rgba(0, 164, 120, 0.08);
+      }
+
+      .flow-line {
+        stroke-dasharray: 8 10;
+        animation: flow 2.5s linear infinite;
+      }
+
+      @keyframes flow {
+        to {
+          stroke-dashoffset: -36;
+        }
+      }
+
+      .flow-dot {
+        animation: pulse-dot 2.4s ease-in-out infinite;
+        transform-origin: center;
+      }
+
+      .flow-dot.delay-1 {
+        animation-delay: 0.5s;
+      }
+
+      .flow-dot.delay-2 {
+        animation-delay: 1s;
+      }
+
+      .flow-dot.delay-3 {
+        animation-delay: 1.5s;
+      }
+
+      @keyframes pulse-dot {
+        0%,
+        100% {
+          opacity: 0.35;
+          transform: scale(0.8);
+        }
+
+        50% {
+          opacity: 1;
+          transform: scale(1.15);
+        }
+      }
+
+      .product-node {
+        animation: node-pulse 3s ease-in-out infinite;
+      }
+
+      @keyframes node-pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(204, 255, 0, 0);
+        }
+
+        50% {
+          box-shadow: 0 0 0 10px rgba(204, 255, 0, 0.05);
+        }
+      }
+
+      .syvellix-logo-ring {
+        animation: ring-pulse 4s ease-in-out infinite;
+        transform-origin: center;
+      }
+
+      @keyframes ring-pulse {
+        0%,
+        100% {
+          opacity: 0.25;
+          transform: scale(1);
+        }
+
+        50% {
+          opacity: 0.5;
+          transform: scale(1.05);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .flow-line,
+        .flow-dot,
+        .product-node,
+        .syvellix-logo-ring {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 text-gray-900">
+    <!-- Shared AcciVell header -->
+    <div id="header"></div>
+
+    <main>
+      <!-- =====================================================
+           HERO
+      ====================================================== -->
+
+      <section
+        class="relative overflow-hidden bg-white border-b border-gray-200"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-2 pb-6 md:pt-4 md:pb-10">
+          <div class="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+            <!-- Text -->
+            <div>
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fuchsia-50 border border-fuchsia-100 text-fuchsia-700 text-xs font-semibold mb-2 md:mb-3"
+              >
+                <span class="w-2 h-2 rounded-full bg-fuchsia-600"></span>
+                About AcciVell
+              </div>
+
+              <h1
+                class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 leading-tight"
+              >
+                Built to turn
+                <span class="text-fuchsia-600">complex numbers</span>
+                into clear decisions.
+              </h1>
+
+              <!-- Перший абзац -->
+              <p
+                class="mt-2.5 md:mt-3 text-base sm:text-lg text-gray-700 leading-relaxed max-w-2xl"
+              >
+                AcciVell is a financial calculation tool designed to help
+                self-employed professionals understand their numbers more
+                clearly and make better-informed financial decisions.
+              </p>
+
+              <!-- Другий абзац -->
+              <p
+                class="mt-2 md:mt-2.5 text-sm sm:text-base text-gray-600 leading-relaxed max-w-2xl"
+              >
+                AcciVell was designed and developed by
+                <a
+                  href="https://syvellix.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-bold text-gray-900 hover:text-fuchsia-600 transition"
+                >
+                  Syvellix Engineering </a
+                >, an independent web development studio focused on practical
+                digital tools, web applications and data-driven experiences.
+              </p>
+
+              <!-- Кнопки -->
+              <div class="mt-4 md:mt-5 flex flex-wrap gap-3 sm:gap-4">
+                <a
+                  href="index.html#incomeSection"
+                  class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-fuchsia-600 text-white text-sm sm:text-base font-semibold shadow-sm hover:bg-fuchsia-700 transition"
+                >
+                  Try the calculator
+                  <span class="ml-2">→</span>
+                </a>
+
+                <a
+                  href="#syvellix"
+                  class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-800 text-sm sm:text-base font-semibold hover:border-fuchsia-400 hover:text-fuchsia-700 transition"
+                >
+                  Meet Syvellix
+                </a>
+              </div>
+            </div>
+
+            <!-- Visual -->
+            <div
+              class="relative rounded-3xl border border-gray-200 bg-gray-50 overflow-hidden syvellix-glow"
+            >
+              <div class="absolute inset-0 syvellix-grid"></div>
+
+              <div class="relative p-6 sm:p-8">
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <p
+                      class="text-xs uppercase tracking-[0.2em] font-semibold text-gray-400"
+                    >
+                      Product architecture
+                    </p>
+
+                    <p class="mt-1 text-sm text-gray-600">
+                      From logic to a practical digital product
+                    </p>
+                  </div>
+
+                  <div
+                    class="w-9 h-9 rounded-full bg-white border border-gray-200 flex items-center justify-center"
+                  >
+                    <span
+                      class="w-2.5 h-2.5 rounded-full bg-fuchsia-600"
+                    ></span>
+                  </div>
+                </div>
+
+                <!-- SVG FLOW -->
+                <div
+                  class="relative rounded-2xl bg-white/90 border border-gray-200 p-4 sm:p-6"
+                >
+                  <svg
+                    viewBox="0 0 620 420"
+                    class="w-full h-auto"
+                    role="img"
+                    aria-label="Visual representation of the AcciVell product development flow"
+                  >
+                    <!-- Background circles -->
+                    <circle
+                      cx="310"
+                      cy="210"
+                      r="105"
+                      fill="none"
+                      stroke="#00a478"
+                      stroke-width="1"
+                      opacity="0.08"
+                      class="syvellix-logo-ring"
+                    />
+
+                    <circle
+                      cx="310"
+                      cy="210"
+                      r="78"
+                      fill="none"
+                      stroke="#00a478"
+                      stroke-width="1"
+                      opacity="0.08"
+                    />
+
+                    <!-- Animated dots -->
+                    <circle
+                      cx="175"
+                      cy="118"
+                      r="4"
+                      fill="#c026d3"
+                      class="flow-dot"
+                    />
+
+                    <circle
+                      cx="190"
+                      cy="295"
+                      r="4"
+                      fill="#00a478"
+                      class="flow-dot delay-1"
+                    />
+
+                    <circle
+                      cx="435"
+                      cy="118"
+                      r="4"
+                      fill="#c026d3"
+                      class="flow-dot delay-2"
+                    />
+
+                    <circle
+                      cx="435"
+                      cy="295"
+                      r="4"
+                      fill="#00a478"
+                      class="flow-dot delay-3"
+                    />
+
+                    <!-- Left nodes -->
+
+                    <g>
+                      <rect
+                        x="30"
+                        y="72"
+                        width="150"
+                        height="66"
+                        rx="14"
+                        fill="#ffffff"
+                        stroke="#e5e7eb"
+                      />
+
+                      <circle cx="52" cy="95" r="6" fill="#f3e8ff" />
+
+                      <text
+                        x="68"
+                        y="100"
+                        font-size="13"
+                        font-weight="700"
+                        fill="#111827"
+                      >
+                        REQUIREMENTS
+                      </text>
+
+                      <text x="52" y="120" font-size="11" fill="#6b7280">
+                        Real-world needs
+                      </text>
+                    </g>
+
+                    <g>
+                      <rect
+                        x="30"
+                        y="282"
+                        width="150"
+                        height="66"
+                        rx="14"
+                        fill="#ffffff"
+                        stroke="#e5e7eb"
+                      />
+
+                      <circle cx="52" cy="305" r="6" fill="#ccff00" />
+
+                      <text
+                        x="68"
+                        y="310"
+                        font-size="13"
+                        font-weight="700"
+                        fill="#111827"
+                      >
+                        DATA
+                      </text>
+
+                      <text x="52" y="330" font-size="11" fill="#6b7280">
+                        Numbers &amp; information
+                      </text>
+                    </g>
+
+                    <!-- Centre -->
+                    <!-- Centre -->
+                    <g class="product-node">
+                      <!-- Main Syvellix node -->
+                      <circle cx="310" cy="210" r="55" fill="#050505" />
+
+                      <!-- Syvellix logo -->
+                      <g
+                        transform="translate(289 189)"
+                        color="#CCFF00"
+                        aria-hidden="true"
+                      >
+                        <circle cx="8" cy="9" r="1.8" fill="currentColor" />
+                        <circle cx="16" cy="7" r="1.5" fill="currentColor" />
+                        <circle cx="23" cy="10" r="1.7" fill="currentColor" />
+                        <circle cx="15" cy="16" r="1.6" fill="currentColor" />
+                        <circle cx="8" cy="22" r="1.8" fill="currentColor" />
+                        <circle cx="15" cy="28" r="1.5" fill="currentColor" />
+                        <circle cx="23" cy="31" r="1.7" fill="currentColor" />
+                        <circle cx="16" cy="36" r="1.6" fill="currentColor" />
+
+                        <path
+                          d="M8 9 C22 2,25 14,15 16 C5 19,5 26,23 31"
+                          stroke="currentColor"
+                          stroke-width="0.7"
+                          opacity="0.35"
+                          fill="none"
+                        />
+
+                        <circle
+                          cx="33"
+                          cy="21"
+                          r="6"
+                          stroke="currentColor"
+                          stroke-width="1.2"
+                          opacity="0.4"
+                          fill="none"
+                        />
+
+                        <circle cx="33" cy="21" r="3.2" fill="currentColor" />
+
+                        <circle cx="33" cy="21" r="1.2" fill="#050505" />
+                      </g>
+
+                      <!-- Text below the node -->
+                      <text
+                        x="310"
+                        y="282"
+                        text-anchor="middle"
+                        font-size="13"
+                        font-weight="700"
+                        fill="#111827"
+                      >
+                        SYVELLIX ENGINEERING
+                      </text>
+
+                      <text
+                        x="310"
+                        y="300"
+                        text-anchor="middle"
+                        font-size="11"
+                        fill="#6b7280"
+                      >
+                        Design · Logic · Technology
+                      </text>
+                    </g>
+
+                    <!-- Right nodes -->
+
+                    <g>
+                      <rect
+                        x="440"
+                        y="72"
+                        width="150"
+                        height="66"
+                        rx="14"
+                        fill="#ffffff"
+                        stroke="#e5e7eb"
+                      />
+
+                      <circle cx="462" cy="95" r="6" fill="#fce7f3" />
+
+                      <text
+                        x="478"
+                        y="100"
+                        font-size="13"
+                        font-weight="700"
+                        fill="#111827"
+                      >
+                        INTERFACE
+                      </text>
+
+                      <text x="462" y="120" font-size="11" fill="#6b7280">
+                        Clear user experience
+                      </text>
+                    </g>
+
+                    <g>
+                      <rect
+                        x="440"
+                        y="282"
+                        width="150"
+                        height="66"
+                        rx="14"
+                        fill="#ffffff"
+                        stroke="#e5e7eb"
+                      />
+
+                      <circle cx="462" cy="305" r="6" fill="#d1fae5" />
+
+                      <text
+                        x="478"
+                        y="310"
+                        font-size="13"
+                        font-weight="700"
+                        fill="#111827"
+                      >
+                        PRODUCT
+                      </text>
+
+                      <text x="462" y="330" font-size="11" fill="#6b7280">
+                        Useful digital tool
+                      </text>
+                    </g>
+                  </svg>
+                </div>
+
+                <div
+                  class="mt-5 flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-400"
+                >
+                  <span>Build</span>
+                  <span>→</span>
+                  <span>Connect</span>
+                  <span>→</span>
+                  <span>Visualise</span>
+                  <span>→</span>
+                  <span>Deliver</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           BUILT BY SYVELLIX
+      ====================================================== -->
+
+      <section class="max-w-5xl mx-auto px-6 py-16 md:py-20">
+        <div class="max-w-3xl">
+          <p
+            class="text-sm font-semibold uppercase tracking-wider text-fuchsia-600 mb-3"
+          >
+            Built by Syvellix Engineering
+          </p>
+
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+            Practical technology built around real requirements.
+          </h2>
+
+          <p class="mt-6 text-lg leading-relaxed text-gray-600">
+            AcciVell was created to make financial calculations easier to
+            understand by combining structured calculation logic, an interactive
+            interface and clear data visualisation in one web application.
+          </p>
+
+          <p class="mt-4 text-gray-600 leading-relaxed">
+            The product is designed around the needs of self-employed
+            professionals in the UK, with a focus on presenting complex
+            financial information in a way that is easier to explore, understand
+            and use.
+          </p>
+
+          <p class="mt-4 text-gray-600 leading-relaxed">
+            Its development also reflects the engineering approach of Syvellix:
+            understand the underlying problem, structure the logic, build an
+            intuitive interface and turn the result into a practical digital
+            product.
+          </p>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           HOW IT IS BUILT
+      ====================================================== -->
+
+      <section class="bg-gray-50 border-y border-gray-200">
+        <div class="max-w-5xl mx-auto px-6 py-16 md:py-20">
+          <div class="max-w-2xl mb-10">
+            <p
+              class="text-sm font-semibold uppercase tracking-wider text-fuchsia-600 mb-3"
+            >
+              How AcciVell is built
+            </p>
+
+            <h2 class="text-3xl md:text-4xl font-bold">
+              More than a calculation.
+            </h2>
+
+            <p class="mt-4 text-gray-600 leading-relaxed">
+              AcciVell combines several parts of a modern web application to
+              turn financial rules and user input into clear, actionable
+              information.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <!-- Card -->
+            <article
+              class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-md transition"
+            >
+              <div
+                class="w-11 h-11 rounded-xl bg-fuchsia-50 text-fuchsia-700 flex items-center justify-center font-bold text-lg"
+              >
+                01
+              </div>
+
+              <h3 class="mt-5 text-xl font-bold">
+                Structured calculation logic
+              </h3>
+
+              <p class="mt-3 text-gray-600 leading-relaxed">
+                Financial rules are translated into structured calculation logic
+                so that different income levels, tax bands and National
+                Insurance thresholds can be represented consistently.
+              </p>
+            </article>
+
+            <!-- Card -->
+            <article
+              class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-md transition"
+            >
+              <div
+                class="w-11 h-11 rounded-xl bg-fuchsia-50 text-fuchsia-700 flex items-center justify-center font-bold text-lg"
+              >
+                02
+              </div>
+
+              <h3 class="mt-5 text-xl font-bold">
+                Interactive user experience
+              </h3>
+
+              <p class="mt-3 text-gray-600 leading-relaxed">
+                Users can enter their own figures and immediately see how
+                changes in income and expenses affect the resulting calculation.
+              </p>
+            </article>
+
+            <!-- Card -->
+            <article
+              class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-md transition"
+            >
+              <div
+                class="w-11 h-11 rounded-xl bg-fuchsia-50 text-fuchsia-700 flex items-center justify-center font-bold text-lg"
+              >
+                03
+              </div>
+
+              <h3 class="mt-5 text-xl font-bold">Data visualisation</h3>
+
+              <p class="mt-3 text-gray-600 leading-relaxed">
+                Charts and structured breakdowns turn numerical results into
+                visual information, helping users understand where their money
+                goes rather than relying on a single final figure.
+              </p>
+            </article>
+
+            <!-- Card -->
+            <article
+              class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-md transition"
+            >
+              <div
+                class="w-11 h-11 rounded-xl bg-fuchsia-50 text-fuchsia-700 flex items-center justify-center font-bold text-lg"
+              >
+                04
+              </div>
+
+              <h3 class="mt-5 text-xl font-bold">
+                Designed for future development
+              </h3>
+
+              <p class="mt-3 text-gray-600 leading-relaxed">
+                The application is being developed with a structure that can
+                support additional functionality such as user accounts, saved
+                calculations, dashboards and more advanced financial tools.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           ACCIVELL AS AN EXAMPLE (Tech Dashboard Style)
+      ====================================================== -->
+      <section class="max-w-5xl mx-auto px-6 py-20">
+        <div class="grid lg:grid-cols-[1fr_0.9fr] gap-16 items-center">
+          <div class="relative z-10">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fuchsia-100/50 border border-fuchsia-200 mb-6"
+            >
+              <span
+                class="w-2 h-2 rounded-full bg-fuchsia-600 animate-pulse"
+              ></span>
+              <p
+                class="text-xs font-bold uppercase tracking-widest text-fuchsia-700"
+              >
+                AcciVell Showcase
+              </p>
+            </div>
+
+            <h2
+              class="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 leading-[1.1]"
+            >
+              From financial logic to a
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 to-purple-600"
+                >usable web app.</span
+              >
+            </h2>
+
+            <p class="mt-6 text-lg text-gray-600 leading-relaxed">
+              AcciVell demonstrates how a custom web application can combine
+              calculation logic, interactive forms and data visualisation to
+              turn complex information into something clear and useful.
+            </p>
+
+            <a
+              href="index.html#incomeSection"
+              class="group inline-flex items-center gap-3 mt-8 px-6 py-3 rounded-xl bg-gray-900 text-white font-semibold hover:bg-fuchsia-600 hover:shadow-lg hover:shadow-fuchsia-500/30 transition-all duration-300"
+            >
+              Explore AcciVell
+              <span class="group-hover:translate-x-1 transition-transform"
+                >→</span
+              >
+            </a>
+          </div>
+
+          <!-- Glassmorphism Product Visual -->
+          <div class="relative group perspective-1000">
+            <!-- Background glowing orbs -->
+            <div
+              class="absolute -top-10 -right-10 w-64 h-64 rounded-full bg-fuchsia-500/30 blur-[60px] mix-blend-multiply group-hover:bg-fuchsia-500/40 transition-colors duration-700"
+            ></div>
+            <div
+              class="absolute -bottom-10 -left-10 w-64 h-64 rounded-full bg-purple-600/20 blur-[60px] mix-blend-multiply group-hover:bg-purple-600/40 transition-colors duration-700"
+            ></div>
+
+            <div
+              class="relative rounded-3xl bg-gray-900/90 backdrop-blur-xl border border-white/10 p-8 shadow-2xl transform transition-transform duration-500 hover:-translate-y-2 hover:rotate-1"
+            >
+              <div
+                class="flex items-center justify-between mb-8 pb-4 border-b border-white/10"
+              >
+                <div>
+                  <p class="text-xs font-mono uppercase text-gray-400">
+                    System // AcciVell
+                  </p>
+                  <p class="text-white font-bold text-lg mt-1">
+                    Financial Overview
+                  </p>
+                </div>
+                <div
+                  class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-md shadow-inner"
+                >
+                  <span
+                    class="w-2.5 h-2.5 rounded-full bg-fuchsia-400 shadow-[0_0_10px_rgba(232,121,249,0.8)]"
+                  ></span>
+                </div>
+              </div>
+
+              <!-- Animated Data Bars -->
+              <div class="space-y-6">
+                <div class="group/bar cursor-default">
+                  <div class="flex justify-between text-sm mb-2 font-medium">
+                    <span
+                      class="text-gray-400 group-hover/bar:text-white transition-colors"
+                      >Income Tax</span
+                    >
+                    <span class="text-fuchsia-400 font-mono">20%</span>
+                  </div>
+                  <div
+                    class="h-2.5 rounded-full bg-black/50 overflow-hidden shadow-inner"
+                  >
+                    <div
+                      class="h-full rounded-full bg-gradient-to-r from-fuchsia-600 to-fuchsia-400 w-[42%] relative overflow-hidden"
+                    >
+                      <div
+                        class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/bar:translate-x-[100%] transition-transform duration-1000"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="group/bar cursor-default">
+                  <div class="flex justify-between text-sm mb-2 font-medium">
+                    <span
+                      class="text-gray-400 group-hover/bar:text-white transition-colors"
+                      >National Insurance</span
+                    >
+                    <span class="text-purple-400 font-mono">6%</span>
+                  </div>
+                  <div
+                    class="h-2.5 rounded-full bg-black/50 overflow-hidden shadow-inner"
+                  >
+                    <div
+                      class="h-full rounded-full bg-gradient-to-r from-purple-600 to-purple-400 w-[24%] relative overflow-hidden"
+                    >
+                      <div
+                        class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/bar:translate-x-[100%] transition-transform duration-1000"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pt-2">
+                  <div class="flex justify-between text-sm mb-2 font-medium">
+                    <span class="text-gray-300">Net Income</span>
+                  </div>
+                  <div class="h-1.5 rounded-full bg-black/50 overflow-hidden">
+                    <div class="h-full rounded-full bg-white/80 w-[68%]"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           SYVELLIX (Dark Tech / Cyber Aesthetic)
+      ====================================================== -->
+      <section
+        id="syvellix"
+        class="relative overflow-hidden bg-[#030303] text-white border-t border-white/5"
+      >
+        <!-- Abstract Tech Background -->
+        <div
+          class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
+        ></div>
+        <div
+          class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-[100%] bg-[#CCFF00]/5 blur-[120px] pointer-events-none"
+        ></div>
+
+        <div class="relative max-w-6xl mx-auto px-6 py-24">
+          <div class="grid lg:grid-cols-[1fr_1.5fr] gap-16 items-start">
+            <!-- Syvellix Brand -->
+            <div class="sticky top-24">
+              <div class="flex items-center gap-4 mb-8">
+                <!-- Вставте ваш SVG логотип тут. Я додав йому трохи світіння -->
+                <div
+                  class="p-2 rounded-xl bg-white/5 border border-white/10 shadow-[0_0_30px_rgba(204,255,0,0.15)]"
+                >
+                  <svg
+                    width="42"
+                    height="42"
+                    viewBox="0 0 42 42"
+                    fill="none"
+                    class="text-[#CCFF00]"
+                  >
+                    <circle cx="8" cy="9" r="1.8" fill="currentColor" />
+                    <circle cx="16" cy="7" r="1.5" fill="currentColor" />
+                    <circle cx="23" cy="10" r="1.7" fill="currentColor" />
+                    <circle cx="15" cy="16" r="1.6" fill="currentColor" />
+                    <circle cx="8" cy="22" r="1.8" fill="currentColor" />
+                    <circle cx="15" cy="28" r="1.5" fill="currentColor" />
+                    <circle cx="23" cy="31" r="1.7" fill="currentColor" />
+                    <circle cx="16" cy="36" r="1.6" fill="currentColor" />
+                    <path
+                      d="M8 9 C22 2,25 14,15 16 C5 19,5 26,23 31"
+                      stroke="currentColor"
+                      stroke-width="0.7"
+                      opacity="0.35"
+                    />
+                    <circle
+                      cx="33"
+                      cy="21"
+                      r="6"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                      opacity="0.4"
+                    />
+                    <circle cx="33" cy="21" r="3.2" fill="currentColor" />
+                    <circle cx="33" cy="21" r="1.2" fill="#050505" />
+                  </svg>
+                </div>
+                <div>
+                  <h2
+                    class="text-2xl font-black tracking-widest text-white uppercase"
+                  >
+                    Syvellix
+                  </h2>
+                  <p
+                    class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#CCFF00]"
+                  >
+                    Engineering
+                  </p>
+                </div>
+              </div>
+
+              <h3 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                Digital tools built for <br />
+                <span
+                  class="text-transparent bg-clip-text bg-gradient-to-r from-[#CCFF00] to-[#00a478]"
+                  >real problems.</span
+                >
+              </h3>
+              <p class="text-gray-400 text-lg leading-relaxed mb-10">
+                Independent web development studio focused on building
+                practical, high-performance web applications and data
+                visualisation tools.
+              </p>
+            </div>
+
+            <!-- Bento Box Grid for Services -->
+            <div class="grid sm:grid-cols-2 gap-4">
+              <!-- Card 1 -->
+              <div
+                class="group relative p-6 rounded-2xl bg-[#0A0A0A] border border-[#1A1A1A] hover:border-[#CCFF00]/50 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+              >
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-[#CCFF00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+                <div class="text-[#CCFF00] text-2xl mb-4 font-light">◇</div>
+                <h4 class="text-lg font-semibold text-white mb-2 relative z-10">
+                  Professional Websites
+                </h4>
+                <p class="text-sm text-gray-500 leading-relaxed relative z-10">
+                  Modern responsive websites designed around your business
+                  metrics and user experience.
+                </p>
+              </div>
+
+              <!-- Card 2 -->
+              <div
+                class="group relative p-6 rounded-2xl bg-[#0A0A0A] border border-[#1A1A1A] hover:border-[#CCFF00]/50 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+              >
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-[#CCFF00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+                <div class="text-[#CCFF00] text-2xl mb-4 font-light">◌</div>
+                <h4 class="text-lg font-semibold text-white mb-2 relative z-10">
+                  Booking Workflows
+                </h4>
+                <p class="text-sm text-gray-500 leading-relaxed relative z-10">
+                  Seamless customer journeys, inquiry handling, and automated
+                  scheduling systems.
+                </p>
+              </div>
+
+              <!-- Card 3 -->
+              <div
+                class="group relative p-6 rounded-2xl bg-[#0A0A0A] border border-[#1A1A1A] hover:border-[#CCFF00]/50 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+              >
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-[#CCFF00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+                <div class="text-[#CCFF00] text-2xl mb-4 font-light">◉</div>
+                <h4 class="text-lg font-semibold text-white mb-2 relative z-10">
+                  Interactive Data
+                </h4>
+                <p class="text-sm text-gray-500 leading-relaxed relative z-10">
+                  Turning complex calculations and raw data into visually clear,
+                  interactive user experiences.
+                </p>
+              </div>
+
+              <!-- Card 4 -->
+              <div
+                class="group relative p-6 rounded-2xl bg-[#0A0A0A] border border-[#1A1A1A] hover:border-[#CCFF00]/50 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+              >
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-[#CCFF00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+                <div class="text-[#CCFF00] text-2xl mb-4 font-light">+</div>
+                <h4 class="text-lg font-semibold text-white mb-2 relative z-10">
+                  Custom Web Tools
+                </h4>
+                <p class="text-sm text-gray-500 leading-relaxed relative z-10">
+                  Purpose-built internal platforms and web apps for specific
+                  operational requirements.
+                </p>
+              </div>
+
+              <!-- CTA Banner -->
+              <div
+                class="sm:col-span-2 mt-4 p-8 rounded-2xl bg-gradient-to-r from-[#0A0A0A] to-[#111] border border-[#1A1A1A] flex flex-col md:flex-row items-center justify-between gap-6"
+              >
+                <div>
+                  <p class="text-xl font-bold text-white mb-1">
+                    Have a project in mind?
+                  </p>
+                  <p class="text-sm text-gray-400">
+                    Let's build a practical digital product together.
+                  </p>
+                </div>
+                <a
+                  href="https://syvellix.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Syvellix Engineering website"
+                  class="group relative inline-flex items-center justify-center px-8 py-3.5 rounded-xl bg-[#CCFF00] text-black font-bold overflow-hidden transition-transform hover:scale-105"
+                >
+                  <span
+                    class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"
+                  ></span>
+                  <span class="relative flex items-center gap-2">
+                    Visit Syvellix
+                    <span class="group-hover:translate-x-1 transition-transform"
+                      >→</span
+                    >
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           DISCLAIMER / FINAL NOTE
+      ====================================================== -->
+      <section class="max-w-5xl mx-auto px-4 sm:px-6 py-6 md:py-10">
+        <div
+          class="relative rounded-2xl bg-white border border-gray-100 p-5 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden"
+        >
+          <!-- Subtle top accent line -->
+          <div
+            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gray-100 via-fuchsia-300 to-gray-100"
+          ></div>
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-5 items-start">
+            <div class="shrink-0 p-2.5 rounded-full bg-gray-50 text-gray-400">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </div>
+            <p class="text-xs sm:text-sm text-gray-500 leading-relaxed pt-0.5">
+              <strong class="text-gray-700 font-semibold">Please note:</strong>
+              AcciVell is an independently developed financial calculation tool.
+              Its calculations are estimates based on the tax rules, thresholds
+              and assumptions described throughout the website. It is intended
+              to provide useful financial information and does not replace an
+              official HMRC calculation or professional tax advice.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =======================================================
+         FOOTER (Modernized layout)
+    ======================================================== -->
+    <footer class="mt-10 py-5 bg-gray-100 text-center text-sm text-gray-600">
+      <!-- Copyright -->
+      <p class="mb-0 px-4 md:px-0 leading-5">
+        &copy; <span id="currentYear"></span>
+        <span class="font-extrabold tracking-tight">
+          <span class="text-purple-800">Acci</span
+          ><span class="text-fuchsia-600">Vell</span>
+        </span>
+        All rights reserved.
+      </p>
+
+      <!-- Legal links -->
+      <p class="mt-0 px-4 md:px-0 leading-5">
+        <a
+          href="terms-of-service.html"
+          class="text-gray-700 hover:text-purple-800 transition-colors duration-200"
+        >
+          Terms of Service
+        </a>
+
+        <span class="mx-2 text-gray-400">|</span>
+
+        <a
+          href="privacy.html"
+          class="text-gray-700 hover:text-purple-800 transition-colors duration-200"
+        >
+          Privacy Policy
+        </a>
+      </p>
+
+      <!-- Contact -->
+      <p class="mt-0 px-4 md:px-0 leading-5">
+        <a
+          href="contact-us.html"
+          class="text-gray-700 hover:text-purple-800 transition-colors duration-200"
+        >
+          Feedback / Contact us
+        </a>
+      </p>
+
+      <!-- Developer credit -->
+      <p class="mt-2 px-4 leading-5 text-gray-500">
+        <span data-i18n="footer_developed_by">
+          Designed &amp; Developed by
+        </span>
+
+        <a
+          href="https://syvellix.com/"
+          class="ml-1 font-bold bg-gradient-to-r from-purple-700 via-fuchsia-700 to-purple-700 bg-[length:250%_auto] bg-clip-text text-transparent animate-shine hover:opacity-80 transition-opacity duration-200"
+        >
+          Syvellix Engineering
+        </a>
+      </p>
+    </footer>
+
+    <!-- Shared JavaScript -->
+    <script src="/js/main.js" defer></script>
+  </body>
+</html>
