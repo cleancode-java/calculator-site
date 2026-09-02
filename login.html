@@ -1,127 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Document</title>
-</head>
+  </head>
 
-<body class="bg-gray-100 min-h-screen flex flex-col">
-
-  <!-- Header -->
-  <header class="p-6">
-    <a href="/" class="text-2xl font-bold hover:opacity-80">
-      <span class="text-purple-800">Acci</span><span class="text-fuchsia-600">Vell</span>
-    </a>
-  </header>
-
-  <!-- Main -->
-  <main class="flex-grow flex items-center justify-center">
-
-    <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
-
-      <!-- Back button -->
-      <a href="/" class="text-sm text-fuchsia-700 hover:underline mb-6 inline-block">
-        ← Back to Home
+  <body class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="p-6">
+      <a href="/" class="text-2xl font-bold hover:opacity-80">
+        <span class="text-purple-800">Acci</span
+        ><span class="text-fuchsia-600">Vell</span>
       </a>
+    </header>
 
-      <h2 class="text-2xl font-bold text-center mb-6">
-        Login to Accivell
-      </h2>
-
-      <!-- Email -->
-      <div class="mb-4">
-        <label class="block text-sm font-medium mb-1">Email</label>
-        <input 
-          id="email"
-          type="email"
-          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-fuchsia-400"
-        />
-      </div>
-
-      <!-- Password -->
-      <div class="mb-6">
-        <label class="block text-sm font-medium mb-1">Password</label>
-        <input 
-          id="password"
-          type="password"
-          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-fuchsia-400"
-        />
-      </div>
-
-      <!-- Buttons -->
-      <div class="flex flex-col gap-3">
-        <button 
-          id="loginBtn"
-          class="bg-fuchsia-700 text-white py-2 rounded hover:bg-fuchsia-800 transition"
+    <!-- Main -->
+    <main class="flex-grow flex items-center justify-center">
+      <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+        <!-- Back button -->
+        <a
+          href="/"
+          class="text-sm text-fuchsia-700 hover:underline mb-6 inline-block"
         >
-          Log in
-        </button>
-
-        <button 
-          id="signupBtn"
-          class="border border-fuchsia-600 text-fuchsia-700 py-2 rounded hover:bg-fuchsia-50 transition"
-        >
-          Sign up
-        </button>
-      </div>
-
-    </div>
-
-  </main>
-
-  <!-- Footer -->
-  <div>
-    <footer class="mt-12 py-4 bg-gray-100 text-center text-sm text-gray-600">
-      <p class="mb-0 px-4 md:px-0">
-        &copy; <span id="currentYear"></span>
-        <span class="font-extrabold tracking-tight">
-          <span class="text-purple-800">Acci</span><span class="text-fuchsia-600">Vell</span>
-        </span> All rights reserved.
-      </p>
-      <p class="mb-0 px-4 md:px-0">
-        <a href="terms-of-service.html" class="underline text-gray-700 hover:text-purple-800 transition-colors duration-200">
-          Terms of Service
+          ← Back to Home
         </a>
-        <span class="mx-2">|</span>
-          <a href="privacy.html" class="underline text-gray-700 hover:text-purple-800 transition-colors duration-200">
+
+        <h2 class="text-2xl font-bold text-center mb-6">Login to Accivell</h2>
+
+        <!-- Email -->
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-1">Email</label>
+          <input
+            id="email"
+            type="email"
+            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-fuchsia-400"
+          />
+        </div>
+
+        <!-- Password -->
+        <div class="mb-6">
+          <label class="block text-sm font-medium mb-1">Password</label>
+          <input
+            id="password"
+            type="password"
+            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-fuchsia-400"
+          />
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex flex-col gap-3">
+          <button
+            id="loginBtn"
+            class="bg-fuchsia-700 text-white py-2 rounded hover:bg-fuchsia-800 transition"
+          >
+            Log in
+          </button>
+
+          <button
+            id="signupBtn"
+            class="border border-fuchsia-600 text-fuchsia-700 py-2 rounded hover:bg-fuchsia-50 transition"
+          >
+            Sign up
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <div>
+      <footer class="mt-12 py-4 bg-gray-100 text-center text-sm text-gray-600">
+        <p class="mb-0 px-4 md:px-0">
+          &copy; <span id="currentYear"></span>
+          <span class="font-extrabold tracking-tight">
+            <span class="text-purple-800">Acci</span
+            ><span class="text-fuchsia-600">Vell</span>
+          </span>
+          All rights reserved.
+        </p>
+        <p class="mb-0 px-4 md:px-0">
+          <a
+            href="terms-of-service.html"
+            class="underline text-gray-700 hover:text-purple-800 transition-colors duration-200"
+          >
+            Terms of Service
+          </a>
+          <span class="mx-2">|</span>
+          <a
+            href="privacy.html"
+            class="underline text-gray-700 hover:text-purple-800 transition-colors duration-200"
+          >
             Privacy Policy
           </a>
-      </p>
+        </p>
 
         <p class="mt-0 px-4 md:px-0">
-          <a href="contact-us.html" class="underline text-gray-700 hover:text-purple-800 transition-colors duration-200">
+          <a
+            href="contact-us.html"
+            class="underline text-gray-700 hover:text-purple-800 transition-colors duration-200"
+          >
             Feedback / Contact us
           </a>
         </p>
-    </footer>
-  </div>
+      </footer>
+    </div>
 
+    <!-- Friendly Modal overlay with full notice -->
+    <div
+      id="comingSoonOverlay"
+      class="fixed inset-0 bg-gray-100 bg-opacity-70 flex items-center justify-center z-50 hidden"
+    >
+      <div
+        class="bg-white rounded-xl p-8 max-w-md text-center shadow-xl border border-emerald-200"
+      >
+        <h3 class="text-xl font-semibold mb-4 text-emerald-700">
+          🚧 Login is coming soon!
+        </h3>
+        <p class="mb-4 text-gray-700">
+          We are working on expanding the features of our service, so the login
+          form is currently unavailable. Please stay tuned for updates on our
+          website!
+        </p>
+        <p class="mb-4 text-gray-700">
+          Once the basic registration features are ready, we will be happy to
+          notify you. For now, we recommend using the service as a guest
+          (unregistered user).
+        </p>
+        <p class="mb-6 text-sm text-gray-500">
+          Your data (email and password)
+          <span class="font-semibold text-gray-700"
+            >is not collected or stored</span
+          >.
+        </p>
+        <button
+          id="closeOverlay"
+          class="bg-emerald-600 text-white px-5 py-2 rounded-lg hover:bg-emerald-700 transition"
+        >
+          Got it!
+        </button>
+      </div>
+    </div>
 
-<!-- Friendly Modal overlay with full notice -->
-<div id="comingSoonOverlay" class="fixed inset-0 bg-gray-100 bg-opacity-70 flex items-center justify-center z-50 hidden">
-  <div class="bg-white rounded-xl p-8 max-w-md text-center shadow-xl border border-emerald-200">
-    <h3 class="text-xl font-semibold mb-4 text-emerald-700">🚧 Login is coming soon!</h3>
-    <p class="mb-4 text-gray-700">
-      We are working on expanding the features of our service, so the login form is currently unavailable. 
-      Please stay tuned for updates on our website!
-    </p>
-    <p class="mb-4 text-gray-700">
-      Once the basic registration features are ready, we will be happy to notify you. 
-      For now, we recommend using the service as a guest (unregistered user).
-    </p>
-    <p class="mb-6 text-sm text-gray-500">
-      Your data (email and password) <span class="font-semibold text-gray-700">is not collected or stored</span>.
-    </p>
-    <button id="closeOverlay" class="bg-emerald-600 text-white px-5 py-2 rounded-lg hover:bg-emerald-700 transition">
-      Got it!
-    </button>
-  </div>
-</div>
-
-  <script type="module" src="/js/login.js"></script>
-
-</body>
+    <script type="module" src="/js/login.js"></script>
+    <script src="/js/analytics.js" defer></script>
+  </body>
 </html>

@@ -1,64 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>AcciVell</title>
-</head>
-<body class="bg-gray-50 text-gray-800 antialiased">
-
+  </head>
+  <body class="bg-gray-50 text-gray-800 antialiased">
     <nav class="p-6 flex justify-between items-center max-w-3xl mx-auto w-full">
-        <!-- Back button -->
-        <a href="index.html" class="text-purple-600 hover:text-purple-800 font-medium flex items-center space-x-2 transition-colors">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-            <span>Back to Calculator</span>
-        </a>
+      <!-- Back button -->
+      <a
+        href="index.html"
+        class="text-purple-600 hover:text-purple-800 font-medium flex items-center space-x-2 transition-colors"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          ></path>
+        </svg>
+        <span>Back to Calculator</span>
+      </a>
 
-        <!-- Small logo  -->
-        <span class="text-gray-400 font-semibold text-sm tracking-tight">AcciVell</span>
+      <!-- Small logo  -->
+      <span class="text-gray-400 font-semibold text-sm tracking-tight"
+        >AcciVell</span
+      >
     </nav>
 
     <main class="max-w-3xl mx-auto px-6 py-12">
-        <div class="bg-white shadow-sm border border-gray-100 rounded-2xl p-8 md:p-12">
-            
-            <header class="mb-10">
-                <div class="inline-block px-3 py-1 bg-amber-50 text-amber-700 text-xs font-bold uppercase tracking-wider rounded-full mb-4 border border-amber-100">
-                    Important Disclaimer
-                </div>
-                <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
-                    Terms of Service
-                </h1>
-                <p class="text-gray-400 mt-2 text-sm">Effective as of January 2026</p>
-            </header>
+      <div
+        class="bg-white shadow-sm border border-gray-100 rounded-2xl p-8 md:p-12"
+      >
+        <header class="mb-10">
+          <div
+            class="inline-block px-3 py-1 bg-amber-50 text-amber-700 text-xs font-bold uppercase tracking-wider rounded-full mb-4 border border-amber-100"
+          >
+            Important Disclaimer
+          </div>
+          <h1
+            class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight"
+          >
+            Terms of Service
+          </h1>
+          <p class="text-gray-400 mt-2 text-sm">Effective as of January 2026</p>
+        </header>
 
-            <div class="prose prose-slate max-w-none">
-                <p class="text-lg font-semibold text-gray-900 mb-4">
-                    Please read this disclaimer carefully before using AcciVell.
-                </p>
+        <div class="prose prose-slate max-w-none">
+          <p class="text-lg font-semibold text-gray-900 mb-4">
+            Please read this disclaimer carefully before using AcciVell.
+          </p>
 
-                <div class="bg-gray-50 border-l-4 border-gray-400 p-6 my-8 rounded-r-xl">
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        <span class="font-bold text-gray-900">For Informational Purposes Only:</span> AcciVell is a digital tool designed for illustrative purposes only. It does not constitute professional financial, legal, or tax advice.
-                    </p>
-                    <p class="text-gray-700 leading-relaxed">
-                        <span class="font-bold text-gray-900">No Liability:</span> While we strive for maximum accuracy in our calculations, tax laws are complex and subject to change. AcciVell and its developers are not responsible for any errors, omissions, or financial decisions made based on the results of this calculator.
-                    </p>
-                </div>
+          <div
+            class="bg-gray-50 border-l-4 border-gray-400 p-6 my-8 rounded-r-xl"
+          >
+            <p class="text-gray-700 leading-relaxed mb-4">
+              <span class="font-bold text-gray-900"
+                >For Informational Purposes Only:</span
+              >
+              AcciVell is a digital tool designed for illustrative purposes
+              only. It does not constitute professional financial, legal, or tax
+              advice.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              <span class="font-bold text-gray-900">No Liability:</span> While
+              we strive for maximum accuracy in our calculations, tax laws are
+              complex and subject to change. AcciVell and its developers are not
+              responsible for any errors, omissions, or financial decisions made
+              based on the results of this calculator.
+            </p>
+          </div>
 
-                <p class="text-gray-600 leading-relaxed italic">
-                    We strongly recommend consulting with a qualified tax professional or accountant before submitting any official tax returns to HMRC.
-                </p>
+          <p class="text-gray-600 leading-relaxed italic">
+            We strongly recommend consulting with a qualified tax professional
+            or accountant before submitting any official tax returns to HMRC.
+          </p>
 
-                <p class="mt-8 text-gray-500 text-sm">
-                    Full Terms of Service are currently being drafted to reflect future updates.
-                </p>
-            </div>
+          <p class="mt-8 text-gray-500 text-sm">
+            Full Terms of Service are currently being drafted to reflect future
+            updates.
+          </p>
         </div>
+      </div>
     </main>
-
-</body>
+    <script src="/js/analytics.js" defer></script>
+  </body>
 </html>
