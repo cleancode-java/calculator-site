@@ -121,7 +121,6 @@
     loadGoogleAnalytics();
 
     hideCookieBanner();
-    showCookieSettingsButton();
   }
 
   // ===============================
@@ -141,7 +140,6 @@
     });
 
     hideCookieBanner();
-    showCookieSettingsButton();
   }
 
   // =====================================
@@ -321,45 +319,6 @@
     }
   }
 
-  // ==================================
-  // COOKIE SETTINGS BUTTON
-
-  function showCookieSettingsButton() {
-    if (document.getElementById("accivell-cookie-settings")) {
-      return;
-    }
-
-    const button = document.createElement("button");
-
-    button.id = "accivell-cookie-settings";
-    button.type = "button";
-
-    button.textContent = "Cookie settings";
-
-    button.style.cssText = `
-      position: fixed;
-      bottom: 16px;
-      left: 16px;
-      z-index: 99998;
-      padding: 7px 11px;
-      border: 1px solid #D1D5DB;
-      border-radius: 7px;
-      background: #FFFFFF;
-      color: #6B7280;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    `;
-
-    button.addEventListener("click", function () {
-      button.remove();
-      createCookieBanner();
-    });
-
-    document.body.appendChild(button);
-  }
-
   // ===============================
   // UNIVERSAL ANALYTICS EVENT TRACKING
 
@@ -409,8 +368,6 @@
         analytics_storage: "granted",
       });
 
-      showCookieSettingsButton();
-
       return;
     }
 
@@ -430,8 +387,6 @@
 
         return;
       }
-
-      showCookieSettingsButton();
 
       return;
     }
